@@ -20,6 +20,8 @@ Route::get('/', 'ContactController@index');
 //Show static home page
 Route::get('home', 'ContactController@index');
 
+//Show user profile
+Route::get('profile', 'UserController@showProfile');
 
 Route::controllers([
     'auth' => 'Auth\AuthController',

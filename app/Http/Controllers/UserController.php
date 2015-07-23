@@ -15,24 +15,16 @@ class UserController extends Controller
      */
     protected $layout = 'layouts.master';
     
-    //Show login page
-    public function showLogin()
+    //Show profile page
+    public function showProfile()
     {
-       return view('user.login');
-    } 
-    //Log user in
-    public function doLogin()
-    {
-        
-        $email = Input::get('email');
-        $password = Input::get('password');
-        
-        if (Auth::attempt(['email' => $email, 'password' => $password]))
-        {
-            return redirect()->intended('/');
+        //check if user is logged in
+        if (Auth::check()) {
+            return view('user.profile');
         }
+        //if user is not logged in -> ask him to log in
         else {
-             return Redirect::back()->withInput()->with('failure','username or password is invalid!');
+            return redirect()->guest('auth/login');
         }
-    }
+    } 
 }
