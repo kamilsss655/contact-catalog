@@ -19,4 +19,9 @@ class ContactController extends Controller
     {
        return view('welcome');
     }
+    
+    public function listContacts()
+    {
+        return view('contact.list');
+    }
 }
