@@ -154,4 +154,20 @@
         </div>
     </div>
 </div>
+
+
+{{{$name}}}
+
+<div class="container">
+    @foreach ($counties as $county)
+        <p>{{ $county->first_name }}</p>
+        <p>{{ $county->last_name }}</p>
+        <p>{{ $county->email }}</p>
+    @endforeach
+</div>
+
+{!! $counties->render() !!}
+
+
+
 @stop
