@@ -153,8 +153,5 @@
         	</table>
         </div>
     </div>
-    <div class="row">
-        <p class="bg-success" style="padding:10px;margin-top:20px"><small><a href="http://elvery.net/demo/responsive-tables/#no-more-tables" target="_blank">Link</a> to original article</small></p>
-    </div>
 </div>
 @stop

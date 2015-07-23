@@ -16,26 +16,8 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         // $this->call(UserTableSeeder::class);
+        $this->call('CountiesTableSeeder');	
 
         Model::reguard();
     }
-}
-
-
-
-
-class UserTableSeeder extends Seeder {
-
-    public function run()
-    {
-        DB::table('users')->delete();
-
-             User::create(array(
-        'first_name'     => 'Chris',
-        'last_name'     => 'Dorantoro',
-        'email'    => 'bestnunu@eune.pl',
-        'password' => Hash::make('bestnunu'),
-    ));
-    }
-
 }

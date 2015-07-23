@@ -32,4 +32,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+    
+    //User has many contacts, one to many relation
+    public function contacts()
+    {
+	return $this->hasMany('App\Contact');
+    }
 }
