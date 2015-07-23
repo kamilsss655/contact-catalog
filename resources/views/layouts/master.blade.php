@@ -50,25 +50,34 @@
               </ul>
             </li>
           </ul>
-          <form id="signin" class="navbar-form navbar-right" role="form">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input id="email" type="email" class="form-control" name="email" value="" placeholder="Adres email">                                        
-            </div>
+          @if (Auth::check())
+          <form id="logout" class="navbar-form navbar-right"  method="GET" action="{{ url('/auth/logout') }}" role="form">
+            <span>{{ Auth::user()->email }}</span>
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <button type="submit" class="btn btn-danger">Wyloguj</button>
+          </form>
+          @else
+          <form id="signin" class="navbar-form navbar-right" method="POST" action="{{ url('/auth/login') }}" role="form">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input id="email" type="email" class="form-control" name="email" value="" placeholder="Adres email">                                        
+          </div>
 
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                <input id="password" type="password" class="form-control" name="password" value="" placeholder="Hasło">                                        
-            </div>
+          <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input id="password" type="password" class="form-control" name="password" value="" placeholder="Hasło">                                        
+          </div>
 
-            <button type="submit" class="btn btn-primary">Zaloguj</button>
-            <a href="/#register" class="btn btn-default">Utwórz konto</a>
-            </form>
+          <button type="submit" class="btn btn-primary">Zaloguj</button>
+          <a href="/auth/register" class="btn btn-default">Utwórz konto</a>
+          </form>
+          @endif
         </div>
       </div>
     </nav>
     
-    <div class="container text-center">
+    <div>
             @yield('content')
     </div>
     
