@@ -40,7 +40,11 @@ footer {
 }
 
 .padding-form {
-padding-top: 1em;	
+	padding-top: 1em;
+}
+
+.nav-username {
+	padding-right:2em;
 }
 
 /* Aligns feature buttons horizontally for medium screens */

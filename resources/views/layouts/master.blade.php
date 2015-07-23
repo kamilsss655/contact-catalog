@@ -19,10 +19,10 @@
   </head>
 
   <body>
-
+    
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
-       
+        @if (Auth::check())   
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
@@ -36,8 +36,8 @@
        
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/#">Kontakty <span class="sr-only">(current)</span></a></li>
             <li><a href="/#">Dodaj kontakt</a></li>
+            <li role="presentation" class="active"><a href="#">Kontakty <span class="badge">42</span></a></li>
             <li class="dropdown">
               <a href="/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Więcej <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -50,13 +50,38 @@
               </ul>
             </li>
           </ul>
-          @if (Auth::check())
           <form id="logout" class="navbar-form navbar-right"  method="GET" action="{{ url('/auth/logout') }}" role="form">
-            <span>{{ Auth::user()->email }}</span>
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <span class="nav-username">{{ Auth::user()->email }}</span>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <button type="submit" class="btn btn-danger">Wyloguj</button>
           </form>
           @else
+          <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/#">Contacto</a>
+        </div>
+
+       
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/#">Informacje</a></li>
+            <li><a href="/#">Poradnik</a></li>
+            <li class="dropdown">
+              <a href="/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Więcej <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/#">Pomoc</a></li>
+                <li><a href="/#">Wsparcie techniczne</a></li>
+                <li class="divider"></li>
+                <li><a href="/#">Skontaktuj się z nami</a></li>
+              </ul>
+            </li>
+          </ul>
           <form id="signin" class="navbar-form navbar-right" method="POST" action="{{ url('/auth/login') }}" role="form">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="input-group">
