@@ -23,15 +23,12 @@ Route::get('home', 'ContactController@index');
 //Show user profile
 Route::get('profile', 'UserController@showProfile');
 
-Route::get('contacts', array('before' => 'auth', 
-    'uses' => 'UserController@showProfile')
-);
 
-Route::group(array('before' => 'auth'), function()
-{
-    Route::get('contacts', 'ContactController@listContacts');
-
-});
+//Show user contacts - only accessible for logged in users
+Route::get('contacts', [
+    'middleware' => 'auth',
+    'uses' => 'ContactController@listContacts'
+]);
 
 Route::controllers([
     'auth' => 'Auth\AuthController',
