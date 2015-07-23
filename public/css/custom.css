@@ -39,6 +39,10 @@ footer {
 	padding-left: 5px;
 }
 
+.padding-form {
+padding-top: 1em;	
+}
+
 /* Aligns feature buttons horizontally for medium screens */
 @media (min-width: 992px) {
 
