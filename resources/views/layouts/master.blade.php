@@ -93,9 +93,10 @@
               <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
               <input id="password" type="password" class="form-control" name="password" value="" placeholder="Hasło">                                        
           </div>
-
-          <button type="submit" class="btn btn-primary">Zaloguj</button>
-          <a href="/auth/register" class="btn btn-default">Utwórz konto</a>
+          <div class="input-group">
+            <a href="/auth/register" class="btn btn-default">Utwórz konto</a>
+            <button type="submit" class="btn btn-primary">Zaloguj</button>
+          </div>
           </form>
           @endif
         </div>

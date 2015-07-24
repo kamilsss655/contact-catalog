@@ -71,6 +71,15 @@ footer {
 
 }
 
+@media only screen and (max-width: 768px){
+
+	.input-group {
+		margin-top: 10px;
+	}
+	.input-group .btn {
+		margin-left:0.2em;
+	}
+}
 /* No-more-tables - Responsive table */
 @media only screen and (max-width: 800px) {
     
@@ -121,3 +130,36 @@ footer {
 	*/
 	#no-more-tables td:before { content: attr(data-title); }
 }
+
+.frame-round {
+
+  box-shadow: 2px 2px 2px #999;
+margin: 0 auto;
+  vertical-align: middle;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.crop {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 50%;
+}
+  
+  .contact-image {
+    display: block;
+    max-height: 100%;
+	min-height: 100%;
+
+    margin: auto;
+    position: absolute;
+    top: -100%;
+    right: -100%;
+    bottom: -100%;
+    left: -100%;
+  }
+  
+
