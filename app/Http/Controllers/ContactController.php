@@ -25,10 +25,9 @@ class ContactController extends Controller
     
     public function listContacts()
     {
-       // $allUsers = User::paginate(15);
-       $name="janek";
-       $counties = Contact::paginate(3);
-        return view('contact.list',compact('name','counties'));
+       $contacts = Contact::paginate(10);
+       $amount = Contact::count();
+        return view('contact.list',compact('contacts','amount'));
         //return view('contact.list', ['allUsers' => User::paginate(15)]);
     }
 }
