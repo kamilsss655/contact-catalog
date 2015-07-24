@@ -3,13 +3,9 @@
 @section('content')
 
 
-<div class="container-fluid">
+<div class="container-fluid padding-form">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <h1 class="text-center">
-                Kontakty
-            </h1>
-        </div>
+
         
         <div id="no-more-tables">
             <table class="col-md-10 col-md-offset-1 table-bordered table-striped table-condensed cf">
@@ -46,7 +42,7 @@
                     <td data-title="Nr mieszkania">{{ $contact->house_number }}</td>
                     <td data-title="Miasto">{{ $contact->city }}</td>
                     <td data-title="Kod pocztowy">{{ $contact->zip_code }}</td>
-                    <td data-title="Województwo">{{ $contact->county_id }}</td>
+                    <td data-title="Województwo">{{ $contact->pivot->county }}</td>
                     <td data-title="Akcja" class="text-center">
                         <a class="btn btn-warning">Usuń</a>
                         <a class="btn btn-default">Edytuj</a>
