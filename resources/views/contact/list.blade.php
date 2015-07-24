@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <h1 class="text-center">
-                Kontakty. {{$amount}} 
+                Kontakty. {{$contactCount}} 
     
             </h1>
         </div>
