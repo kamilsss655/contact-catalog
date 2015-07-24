@@ -7,13 +7,10 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <h1 class="text-center">
-                Kontakty. {{$contactCount}} 
-    
+                Kontakty
             </h1>
         </div>
-        
 
-            
         <div id="no-more-tables">
             <table class="col-md-10 col-md-offset-1 table-bordered table-striped table-condensed cf">
         		<thead class="cf">
