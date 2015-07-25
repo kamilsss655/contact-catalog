@@ -11,13 +11,12 @@
 |
 */
 
+// show a static view for the home page (app/views/index.blade.php)
+Route::get('/', function(){
+    return View::make('index');
+});
 
-//Route::get('/', 'WelcomeController@index');
-
-//Show static welcome page
-Route::get('/', 'ContactController@index');
-
-//Registration, login default routes - comes from Laravel
+//Registration, login default routes - comes from Laravel AuthController
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
@@ -25,12 +24,14 @@ Route::controllers([
 
 //Group using auth middleware - below routes can only be accessed by logged in users
 Route::group(['middleware' => 'auth'], function() {
+    
+    //Show list of user contacts and home page
+    Route::resource('contact', 'ContactsController',
+                ['only' => ['index']]);
    
-    //Show user profile
-    Route::get('profile', 'UserController@showProfile'); 
-    //Show static user home page
-    Route::get('home', 'ContactController@index');
-    //Show list of user contacts
-    Route::get('contacts', 'ContactController@listContacts');
+    //Show user profile - resource generates CRUD methods to use in the future
+    Route::resource('user', 'UsersController',
+                ['only' => ['index']]);
+    
     
 });
