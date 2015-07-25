@@ -27,7 +27,7 @@ class ContactsController extends Controller
         $this->updateContactsCount();
         
         //Pass contact list data to the view
-        return view('contact.list',compact('contacts'));
+        return view('contacts.list',compact('contacts'));
     }
     
 
@@ -80,7 +80,7 @@ class ContactsController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('contacts.show');
     }
 
     /**

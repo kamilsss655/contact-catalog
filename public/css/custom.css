@@ -165,8 +165,10 @@ footer {
 }
 
 .action-btn {
-	display: inline-block;
+	display: block;
+	clear:left;
 	margin: 0.1em;
+	width: 100%;
 }
 
 .required {

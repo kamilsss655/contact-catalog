@@ -34,7 +34,7 @@
                         </div>                   
                         </div>                   
                     </td>
-                    <td data-title="Imię">{{ $contact->first_name}} {{$contact->id}}</td>
+                    <td data-title="Imię">{{ $contact->first_name}}</td>
                     <td data-title="Nazwisko">{{ $contact->last_name }}</td>
                     <td data-title="Email">{{ $contact->email }}</td>
                     <td data-title="Telefon">{{ $contact->phone }}</td>
@@ -45,8 +45,8 @@
                     <td data-title="Województwo">{{ $contact->county }}</td>
                     <td data-title="Akcja" class="text-center">
                         
-                        {!! Form::open(array('route' => array('contact.destroy', $contact->id), 'method' => 'delete', 'class'=> 'action-btn')) !!}
-                            <button type="submit" class="btn btn-danger btn-mini">Usuń</button>
+                        {!! Form::open(array('route' => array('contact.destroy', $contact->id), 'method' => 'delete')) !!}
+                            <button type="submit" class="btn btn-danger btn-mini action-btn">Usuń</button>
                         {!! Form::close() !!}
                         <a href="{{ URL::to('contact/edit/' . $contact->id) }}" class="btn btn-mini btn-primary action-btn">Edytuj</a>
                         <a href="{{ URL::to('contact/' . $contact->id) }}" class="btn btn-mini btn-default action-btn">Pokaż</a>
