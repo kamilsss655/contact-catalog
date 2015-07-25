@@ -4,3 +4,5 @@ $('#btnActivateModal').click(function() {
         .addClass( $(this).data('direction') );
     $('#modalForm').modal('show');
 });
+
+
