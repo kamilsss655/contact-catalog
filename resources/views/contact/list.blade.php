@@ -44,7 +44,11 @@
                     <td data-title="Kod pocztowy">{{ $contact->zip_code }}</td>
                     <td data-title="Województwo">{{ $contact->county }}</td>
                     <td data-title="Akcja" class="text-center">
-                        <a class="btn btn-warning">Usuń</a>
+                        
+                        {!! Form::open(array('route' => array('contact.destroy', $contact->id), 'method' => 'delete')) !!}
+                            <button type="submit" class="btn btn-danger btn-mini">Delete</button>
+                        {!! Form::close() !!}
+                        
                         <a class="btn btn-default">Edytuj</a>
                     </td>
                 </tr>

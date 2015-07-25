@@ -39,22 +39,22 @@
                 <label for="pwd">Województwo:</label>
                 <select class="form-control" id="TempProvinceCode" name="county">
                     <option value="">-- wybierz --</option>
-                    <option value="0200000">dolnośląskie</option>
-                    <option value="0400000">kujawsko-pomorskie</option>
-                    <option value="0600000">lubelskie</option>
-                    <option value="0800000">lubuskie</option>
-                    <option value="1000000">łódzkie</option>
-                    <option value="1200000">małopolskie</option>
-                    <option value="1400000">mazowieckie</option>
-                    <option value="1600000">opolskie</option>
-                    <option value="1800000">podkarpackie</option>
-                    <option value="2000000">podlaskie</option>
-                    <option value="2200000">pomorskie</option>
-                    <option value="2400000">śląskie</option>
-                    <option value="2600000">świętokrzyskie</option>
-                    <option value="2800000">warmińsko-mazurskie</option>
-                    <option value="3000000">wielkopolskie</option>
-                    <option value="3200000">zachodniopomorskie</option>
+                    <option value="dolnośląskie">dolnośląskie</option>
+                    <option value="kujawsko-pomorskie">kujawsko-pomorskie</option>
+                    <option value="lubelskie">lubelskie</option>
+                    <option value="lubuskie">lubuskie</option>
+                    <option value="łódzkie">łódzkie</option>
+                    <option value="małopolskie">małopolskie</option>
+                    <option value="mazowieckie">mazowieckie</option>
+                    <option value="opolskie">opolskie</option>
+                    <option value="podkarpackie">podkarpackie</option>
+                    <option value="podlaskie">podlaskie</option>
+                    <option value="pomorskie">pomorskie</option>
+                    <option value="śląskie">śląskie</option>
+                    <option value="świętokrzyskie">świętokrzyskie</option>
+                    <option value="warmińsko-mazurskie">warmińsko-mazurskie</option>
+                    <option value="wielkopolskie">wielkopolskie</option>
+                    <option value="zachodniopomorskie">zachodniopomorskie</option>
                 </select>		
               </div>
               <div class="form-group">
@@ -70,7 +70,7 @@
             </div>
              <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
-            <input class="btn btn-success" type="submit" value="Send!" id="submit">
+            <input class="btn btn-success" type="submit" value="Dodaj kontakt" id="submit">
           </div>
             </form>
           

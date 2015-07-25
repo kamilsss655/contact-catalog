@@ -45,15 +45,32 @@ class ContactsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created contact in storage.
      *
      * @param  Request  $request
      * @return Response
      */
     public function store(Request $request)
     {
-        
-            return 1;
+        //create new contact
+        $contact = new Contact;
+        //add contact to the currently logged in user
+        $contact->user_id = Auth::user()->id;
+        $contact->first_name = $request->input('first_name');
+        $contact->last_name = $request->input('last_name');
+        $contact->phone = $request->input('phone');
+        $contact->email = $request->input('email');
+        $contact->city = $request->input('city');
+        $contact->street = $request->input('street');
+        $contact->house_number = $request->input('house_number');
+        $contact->county = $request->input('county');
+        $contact->zip_code = $request->input('zip_code');
+        //work to do - to implement file uploads
+        $contact->filename = $request->input('filename');
+        //store new contact in storage
+        $contact->save();
+        //return to contacts view
+        return redirect()->action('ContactsController@index');
     }
 
     /**
@@ -91,7 +108,7 @@ class ContactsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified contact from storage.
      *
      * @param  int  $id
      * @return Response
@@ -99,5 +116,10 @@ class ContactsController extends Controller
     public function destroy($id)
     {
         //
+        $contact = Contact::findOrFail($id);
+        $contact = Contact::where('user_id', '=', Auth::user()->id)->firstOrFail();
+        $contact->delete();
+        //return to contacts view
+        return redirect()->action('ContactsController@index');
     }
 }
