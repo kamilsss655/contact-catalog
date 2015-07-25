@@ -17,9 +17,10 @@ class DatabaseSeeder extends Seeder
 
         // $this->call(UserTableSeeder::class);
         $this->call('UsersTableSeeder');
-        $this->call('CountiesTableSeeder');	
         $this->call('ContactsTableSeeder');	
-        	
+        
+        //no longer needed due to database schema change	
+        //$this->call('CountiesTableSeeder');	
 
         Model::reguard();
     }

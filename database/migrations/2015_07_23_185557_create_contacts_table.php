@@ -21,11 +21,9 @@ class CreateContactsTable extends Migration
             $table->string('city', 64)->nullable();
             $table->string('street', 100)->nullable();
             $table->string('house_number', 10)->nullable();
+            $table->string('county', 32)->nullable();
             $table->string('zip_code', 10)->nullable();
             $table->string('filename', 40)->nullable();
-            
-            $table->integer('county_id')->unsigned();
-            $table->foreign('county_id')->references('id')->on('counties')->onDelete('cascade');
             
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

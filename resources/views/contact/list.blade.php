@@ -42,7 +42,7 @@
                     <td data-title="Nr mieszkania">{{ $contact->house_number }}</td>
                     <td data-title="Miasto">{{ $contact->city }}</td>
                     <td data-title="Kod pocztowy">{{ $contact->zip_code }}</td>
-                    <td data-title="Województwo">{{ $contact->county_id }}</td>
+                    <td data-title="Województwo">{{ $contact->county }}</td>
                     <td data-title="Akcja" class="text-center">
                         <a class="btn btn-warning">Usuń</a>
                         <a class="btn btn-default">Edytuj</a>
