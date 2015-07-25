@@ -114,9 +114,8 @@ class ContactsController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $contact = Contact::findOrFail($id);
-        $contact = Contact::where('user_id', '=', Auth::user()->id)->firstOrFail();
+        //find requested contact with regard to auth user id
+        $contact = Contact::where('user_id', '=', Auth::user()->id)->findOrFail($id);
         $contact->delete();
         //Update contact count stored in session
         $this->updateContactsCount();

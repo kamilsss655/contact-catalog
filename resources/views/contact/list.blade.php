@@ -34,7 +34,7 @@
                         </div>                   
                         </div>                   
                     </td>
-                    <td data-title="Imię">{{ $contact->first_name }}</td>
+                    <td data-title="Imię">{{ $contact->first_name}} {{$contact->id}}</td>
                     <td data-title="Nazwisko">{{ $contact->last_name }}</td>
                     <td data-title="Email">{{ $contact->email }}</td>
                     <td data-title="Telefon">{{ $contact->phone }}</td>
