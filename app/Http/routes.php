@@ -17,21 +17,20 @@
 //Show static welcome page
 Route::get('/', 'ContactController@index');
 
-//Show static home page
-Route::get('home', 'ContactController@index');
-
-//Show user profile
-Route::get('profile', 'UserController@showProfile');
-
-
-//Show user contacts - only accessible for logged in users
-Route::get('contacts', [
-    'middleware' => 'auth',
-    'uses' => 'ContactController@listContacts'
-]);
-
+//Registration, login default routes - comes from Laravel
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
 
+//Group using auth middleware - below routes can only be accessed by logged in users
+Route::group(['middleware' => 'auth'], function() {
+   
+    //Show user profile
+    Route::get('profile', 'UserController@showProfile'); 
+    //Show static user home page
+    Route::get('home', 'ContactController@index');
+    //Show list of user contacts
+    Route::get('contacts', 'ContactController@listContacts');
+    
+});
