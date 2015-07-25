@@ -112,6 +112,7 @@ footer {
 		padding-left: 50%; 
 		white-space: normal;
 		text-align:left;
+		min-height: 2em;
 	}
  
 	#no-more-tables td:before { 
@@ -166,4 +167,8 @@ footer {
 .action-btn {
 	display: inline-block;
 	margin: 0.1em;
+}
+
+.required {
+	background-color: #fff9c4;
 }

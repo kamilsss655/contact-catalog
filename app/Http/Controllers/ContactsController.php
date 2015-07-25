@@ -21,7 +21,7 @@ class ContactsController extends Controller
     public function index()
     {
         //Paginate contacts of the currently authenticated user
-        $contacts = Contact::where('user_id', Auth::user()->id)->paginate(10);
+        $contacts = Contact::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->paginate(10);
         
         //Update contact count stored in session
         $this->updateContactsCount();
