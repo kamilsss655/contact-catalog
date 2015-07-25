@@ -70,16 +70,18 @@ footer {
 }
 
 }
-
+/* Navigation fixes for mobile */
 @media only screen and (max-width: 768px){
 
 	.input-group {
 		margin-top: 10px;
 	}
-	.input-group .btn {
-		margin-left:0.2em;
-	}
 }
+
+.input-group .btn-login {
+	margin-left:0.7em;
+}
+	
 /* No-more-tables - Responsive table */
 @media only screen and (max-width: 800px) {
     

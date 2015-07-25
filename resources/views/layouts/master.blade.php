@@ -95,7 +95,7 @@
           </div>
           <div class="input-group">
             <a href="/auth/register" class="btn btn-default">Utwórz konto</a>
-            <button type="submit" class="btn btn-primary">Zaloguj</button>
+            <button type="submit" class="btn btn-primary btn-login">Zaloguj</button>
           </div>
           </form>
           @endif
