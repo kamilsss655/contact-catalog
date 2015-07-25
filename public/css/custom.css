@@ -162,3 +162,8 @@ footer {
 	bottom: -100%;
 	left: -100%;
 }
+
+.action-btn {
+	display: inline-block;
+	margin: 0.1em;
+}

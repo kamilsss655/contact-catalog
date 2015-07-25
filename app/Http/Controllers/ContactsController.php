@@ -23,11 +23,8 @@ class ContactsController extends Controller
         //Paginate contacts of the currently authenticated user
         $contacts = Contact::where('user_id', Auth::user()->id)->paginate(10);
         
-        //Number of contact that the currently logged in user has
-        //Store number of contacts in session so its accessible across the site, in every view (my invention)
-        //Need to call this every time contact is added or deleted
-        $contactCount = Contact::where('user_id', Auth::user()->id)->count();
-        Session::put('contactCount', $contactCount);
+        //Update contact count stored in session
+        $this->updateContactsCount();
         
         //Pass contact list data to the view
         return view('contact.list',compact('contacts'));
@@ -69,6 +66,8 @@ class ContactsController extends Controller
         $contact->filename = $request->input('filename');
         //store new contact in storage
         $contact->save();
+        //Update contact count stored in session
+        $this->updateContactsCount();
         //return to contacts view
         return redirect()->action('ContactsController@index');
     }
@@ -119,7 +118,18 @@ class ContactsController extends Controller
         $contact = Contact::findOrFail($id);
         $contact = Contact::where('user_id', '=', Auth::user()->id)->firstOrFail();
         $contact->delete();
+        //Update contact count stored in session
+        $this->updateContactsCount();
+        
         //return to contacts view
         return redirect()->action('ContactsController@index');
+    }
+    
+    private function updateContactsCount() {
+        //Number of contact that the currently logged in user has
+        //Store number of contacts in session so its accessible across the site, in every view (my invention)
+        //Need to call this every time contact is added or deleted
+        $contactCount = Contact::where('user_id', Auth::user()->id)->count();
+        Session::put('contactCount', $contactCount);
     }
 }
