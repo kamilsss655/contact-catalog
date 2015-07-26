@@ -164,13 +164,34 @@ footer {
 	left: -100%;
 }
 
+
+
 .action-btn {
 	display: block;
 	clear:left;
 	margin: 0.1em;
+}
+
+.action-btn button {
 	width: 100%;
 }
 
 .required {
 	background-color: #fff9c4;
+}
+
+.profile-name:empty {
+	display:none;
+}
+
+.profile-name {
+	font-size: 1.2em;
+	font-weight:bold;
+}
+
+.inline-help {
+	display:inline;
+}
+.inline-help button {
+	display: inline;
 }

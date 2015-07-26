@@ -69,7 +69,7 @@ class ContactsController extends Controller
         //Update contact count stored in session
         $this->updateContactsCount();
         //return to contacts view
-        return redirect()->action('ContactsController@index');
+        return redirect()->back()->with('status', 'Dodano '.$contact->email);
     }
 
     /**
@@ -80,7 +80,20 @@ class ContactsController extends Controller
      */
     public function show($id)
     {
-        return view('contacts.show');
+        //find contact by id
+        $contact = Contact::where('user_id', '=', Auth::user()->id)->find($id);
+        
+        //check if contact exists
+        if ($contact==null) {
+            //if it doesnt exist goto contact list
+            return redirect()->action('ContactsController@index');
+        }
+        else {
+            //return contact or fail if not found
+            return view('contacts.show',compact('contact'));
+        }
+
+        
     }
 
     /**
@@ -121,7 +134,7 @@ class ContactsController extends Controller
         $this->updateContactsCount();
         
         //return to contacts view
-        return redirect()->action('ContactsController@index');
+        return redirect()->back()->with('status', 'Usunięto '.$contact->email);
     }
     
     private function updateContactsCount() {

@@ -2,6 +2,13 @@
 
 @section('content')
 
+@if (session('status'))
+    <div class="container padding-form text-center">
+    <div class="alert alert-success">
+       <p>{{ session('status') }} <i class="glyphicon glyphicon-ok"></i></p> 
+    </div>
+    </div>
+@endif
 
 <div class="container-fluid padding-form">
     <div class="row">
@@ -45,8 +52,8 @@
                     <td data-title="Województwo">{{ $contact->county }}</td>
                     <td data-title="Akcja" class="text-center">
                         
-                        {!! Form::open(array('route' => array('contact.destroy', $contact->id), 'method' => 'delete')) !!}
-                            <button type="submit" class="btn btn-danger btn-mini action-btn">Usuń</button>
+                        {!! Form::open(array('route' => array('contact.destroy', $contact->id), 'method' => 'delete', 'class' => 'action-btn')) !!}
+                            <button type="submit" class="btn btn-danger btn-mini">Usuń</button>
                         {!! Form::close() !!}
                         <a href="{{ URL::to('contact/edit/' . $contact->id) }}" class="btn btn-mini btn-primary action-btn">Edytuj</a>
                         <a href="{{ URL::to('contact/' . $contact->id) }}" class="btn btn-mini btn-default action-btn">Pokaż</a>

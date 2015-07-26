@@ -27,12 +27,12 @@
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input id="email" type="email" class="form-control" name="email" value="" placeholder="Adres email">                                        
+              <input id="email" type="email" class="form-control" name="email" value="" placeholder="Adres email" required>                                        
           </div>
 
           <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-              <input id="password" type="password" class="form-control" name="password" value="" placeholder="Hasło">                                        
+              <input id="password" type="password" class="form-control" name="password" value="" placeholder="Hasło" required>                                        
           </div>
           <div class="input-group">
             <a href="/auth/register" class="btn btn-default">Utwórz konto</a>
