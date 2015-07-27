@@ -201,6 +201,9 @@ class ContactsController extends Controller
                 //open image to process with imagick
                 $img = Image::make($globalFilePath);
                 
+                //read EXIF and set proper orientation - fixes rotated images when getting images from mobile camera
+                $img->orientate();
+                
                 // crop the best fitting 1:1 (100x100) ratio and resize to 100x100 pixel
                 $img->fit(100, 100, function ($constraint) {
                     $constraint->upsize();
