@@ -13,7 +13,7 @@
                 <div class="panel-body">
                     <div class="frame-round">
                         <div class="crop">
-                            <img class="contact-image" src="/img/placeholders/man.jpg">
+                            @include('partials.contact-image')
                         </div>                   
                     </div>  
                     <p class="text-center profile-name text-capitalize">{{ $contact->first_name.' '.$contact->last_name }}</p>

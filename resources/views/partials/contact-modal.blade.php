@@ -92,7 +92,7 @@
                  <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-camera"></i></span>
-                        <input type="file" name="fileToUpload" id="fileToUpload">  
+                        <input type="file" name="image" id="imageToUpload">  
                     </div>
                 </div>
               

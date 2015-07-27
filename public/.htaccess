@@ -13,4 +13,8 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    #Disable directory listing
+    Options -Indexes
+    IndexIgnore * 
 </IfModule>

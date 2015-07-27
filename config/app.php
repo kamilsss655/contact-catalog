@@ -146,6 +146,9 @@ return [
         
         //Form helpers
         Illuminate\Html\HtmlServiceProvider::class,
+        
+        //Internevtion Image - image manipulation class
+        Intervention\Image\ImageServiceProvider::class
 
     ],
 
@@ -195,7 +198,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Illuminate\Html\FormFacade::class,
-        'HTML'      => Illuminate\Html\HtmlFacade::class
+        'HTML'      => Illuminate\Html\HtmlFacade::class,
+        //Internevion Image class image manipulation
+        'Image'     => Intervention\Image\Facades\Image::class
 
     ],
 

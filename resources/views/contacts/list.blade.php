@@ -31,9 +31,11 @@
                     <td data-title="Zdjęcie">
                         <div class="frame-round">
                         <div class="crop">
-                        <img class="contact-image" src="/img/placeholders/man.jpg">
+                            @include('partials.contact-image')
                         </div>                   
-                        </div>                   
+                        </div>   
+                        
+  
                     </td>
                     <td data-title="Imię">{{ $contact->first_name}}</td>
                     <td data-title="Nazwisko">{{ $contact->last_name }}</td>
