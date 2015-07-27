@@ -154,16 +154,19 @@ class ContactsController extends Controller
         Session::put('contactCount', $contactCount);
     }
     
+    //handle image upload and return $filepath to saved resource
+    //real filepath is public/storage/contact-images/$filepath
     private function imageUpload() {
           // getting all of the post data
         $file = array('image' => Input::file('image'));
         // setting up rules
-        $rules = array('image' => 'required',); //mimes:jpeg,bmp,png and for max size max:10000
+        $rules = array('image'=>'image|max:100'); //mimes:jpeg,bmp,png and for max size max:10000
         // doing the validation, passing post data, rules and the messages
         $validator = Validator::make($file, $rules);
         if ($validator->fails()) {
             // send back to the page with the input data and errors
-            return Redirect::to('upload')->withInput()->withErrors($validator);
+            return view('index');
+
         }
         else {
              // checking file is valid.
@@ -180,9 +183,11 @@ class ContactsController extends Controller
 
                 $fileName = $randomString.'.'.$extension; // renameing image
                 Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
+
                 // sending back with message
                 Session::flash('success', 'Upload successfully'); 
-                return $randomDir.'/'.$randomString.'.'.$extension;
+                $filepath=$randomDir.'/'.$randomString.'.'.$extension;
+                return $filepath;
             }
             else {
                 // sending back with error message.
