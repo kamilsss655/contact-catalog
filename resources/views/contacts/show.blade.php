@@ -11,11 +11,9 @@
                 </div>
                 
                 <div class="panel-body">
-                    <div class="frame-round">
-                        <div class="crop">
-                            @include('partials.contact-image')
-                        </div>                   
-                    </div>  
+                
+                    @include('partials.contact-image')
+                      
                     <p class="text-center profile-name text-capitalize">{{ $contact->first_name.' '.$contact->last_name }}</p>
                     <p class="text-center">{{ $contact->email }}</p>
                     <br>

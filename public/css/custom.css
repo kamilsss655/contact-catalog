@@ -154,14 +154,8 @@ footer {
   
 .contact-image {
 	display: block;
-	max-height: 100%;
-	min-height: 100%;
-	margin: auto;
-	position: absolute;
-	top: -100%;
-	right: -100%;
-	bottom: -100%;
-	left: -100%;
+	margin: 0 auto;
+	border-radius: 50%;
 }
 
 

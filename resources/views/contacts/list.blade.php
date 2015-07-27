@@ -29,11 +29,9 @@
                 @foreach ($contacts as $contact)
                 <tr>
                     <td data-title="Zdjęcie">
-                        <div class="frame-round">
-                        <div class="crop">
+            
                             @include('partials.contact-image')
-                        </div>                   
-                        </div>   
+                    
                         
   
                     </td>
