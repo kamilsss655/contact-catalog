@@ -78,7 +78,10 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <!--Custom add contact modal-->
     <script src="/js/custom/animate.js"></script>
+    <!--Bootbox.js modal lib-->
+    <script src="/js/bootbox.min.js"></script>
 
   </body>
 </html>
