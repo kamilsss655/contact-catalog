@@ -21,6 +21,7 @@
 
   <body>
     
+    <!-- Show navigation -->  
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         @if (Auth::check())   
@@ -30,6 +31,34 @@
           @endif
         </div>
     </nav>
+    
+    <!-- Show controller status messages -->   
+    @if (session('status'))
+    <div class="container-fluid padding-form text-center">
+    <div class="alert alert-success">
+       <p>{{ session('status') }} <i class="glyphicon glyphicon-ok"></i></p> 
+    </div>
+    </div>
+    @endif
+    
+    <!-- Show controller warning messages -->   
+    @if (session('warning'))
+    <div class="container-fluid padding-form text-center">
+    <div class="alert alert-warning">
+       <p>{{ session('warning') }} <i class="glyphicon glyphicon-remove-circle"></i></p> 
+    </div>
+    </div>
+    @endif
+    
+    <!-- Show controller error messages -->   
+    @if (session('error'))
+    <div class="container-fluid padding-form text-center">
+    <div class="alert alert-danger">
+       <p>{{ session('error') }} <i class="glyphicon glyphicon-exclamation-sign"></i></p> 
+    </div>
+    </div>
+    @endif
+    
      <!-- Show main content -->   
     @yield('content')
             
@@ -48,8 +77,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom/animate.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/custom/animate.js"></script>
 
   </body>
 </html>

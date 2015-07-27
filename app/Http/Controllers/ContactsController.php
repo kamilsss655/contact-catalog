@@ -134,7 +134,7 @@ class ContactsController extends Controller
         $this->updateContactsCount();
         
         //return to contacts view
-        return redirect()->back()->with('status', 'Usunięto '.$contact->email);
+        return redirect()->back()->with('warning', 'Usunięto '.$contact->email);
     }
     
     private function updateContactsCount() {

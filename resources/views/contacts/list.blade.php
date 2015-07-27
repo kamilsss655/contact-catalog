@@ -2,13 +2,7 @@
 
 @section('content')
 
-@if (session('status'))
-    <div class="container padding-form text-center">
-    <div class="alert alert-success">
-       <p>{{ session('status') }} <i class="glyphicon glyphicon-ok"></i></p> 
-    </div>
-    </div>
-@endif
+
 
 <div class="container-fluid padding-form">
     <div class="row">
