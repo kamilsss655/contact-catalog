@@ -15,6 +15,7 @@ use Input;
 use Validator;
 use Redirect;
 use File;
+use Image;
 
 class ContactsController extends Controller
 {
@@ -189,11 +190,27 @@ class ContactsController extends Controller
                 $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
 
                 $fileName = $randomString.'.'.$extension; // renameing image
+                
+                
                 $imageFile->move($destinationPath, $fileName); // uploading file to given path
 
+                //filepaths of the image
+                $filePath=$randomDir.'/'.$randomString.'.'.$extension;
+                $globalFilePath='storage/contact-images/'.$filePath;
+                
+                //open image to process with imagick
+                $img = Image::make($globalFilePath);
+                
+                // crop the best fitting 1:1 (100x100) ratio and resize to 100x100 pixel
+                $img->fit(100, 100, function ($constraint) {
+                    $constraint->upsize();
+                });
+                
+                //save resized image with quality of 60%
+                $img->save($globalFilePath, 60);
+                
                 //return filepath of the image
-                $filepath=$randomDir.'/'.$randomString.'.'.$extension;
-                return $filepath;
+                return $filePath;
             }
             else {
                 // sending back with error message.
