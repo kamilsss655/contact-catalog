@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Auth;
+use App;
 use App\Contact;
 use Session;
 use Input;
@@ -157,15 +158,21 @@ class ContactsController extends Controller
     //handle image upload and return $filepath to saved resource
     //real filepath is public/storage/contact-images/$filepath
     private function imageUpload() {
+        
+        $imageFile=Input::file('image');
+        if ($imageFile != null) {
+
           // getting all of the post data
-        $file = array('image' => Input::file('image'));
+        $file = array('image' => $imageFile);
         // setting up rules
-        $rules = array('image'=>'image|max:100'); //mimes:jpeg,bmp,png and for max size max:10000
+        $rules = array('image'=>'image|max:2000'); //mimes:jpeg,bmp,png and for max size max:10000
         // doing the validation, passing post data, rules and the messages
         $validator = Validator::make($file, $rules);
         if ($validator->fails()) {
             // send back to the page with the input data and errors
-            return view('index');
+            
+            redirect()->back()->with('error', 'Nieprawidłowy obraz. Maksymalny rozmiar: 2MB. Obsługiwane formaty: JPG, PNG, BMP ');
+
 
         }
         else {
@@ -175,26 +182,27 @@ class ContactsController extends Controller
                 //can be extended to some more advanced filesystem balancer system in the future
                 $randomDir=strval(mt_rand(0,2));
                 $destinationPath = 'storage/contact-images/'.$randomDir; // upload path
-                $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
+                $extension = $imageFile->getClientOriginalExtension(); // getting image extension
                 
                 //generate high entropy string to prevent image url guessing
                 $length = 20;
                 $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
 
                 $fileName = $randomString.'.'.$extension; // renameing image
-                Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
+                $imageFile->move($destinationPath, $fileName); // uploading file to given path
 
-                // sending back with message
-                Session::flash('success', 'Upload successfully'); 
+                //return filepath of the image
                 $filepath=$randomDir.'/'.$randomString.'.'.$extension;
                 return $filepath;
             }
             else {
                 // sending back with error message.
-                Session::flash('error', 'uploaded file is not valid');
-                return Redirect::to('upload');
+                redirect()->back()->with('error', 'Nieprawidłowy obraz. Maksymalny rozmiar: 2MB. Obsługiwane formaty: JPG, PNG, BMP ');
             }
         }
     }
+    
+        //
+}
     
 }
