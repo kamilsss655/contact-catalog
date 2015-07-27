@@ -13,6 +13,7 @@ use Session;
 use Input;
 use Validator;
 use Redirect;
+use File;
 
 class ContactsController extends Controller
 {
@@ -135,6 +136,10 @@ class ContactsController extends Controller
         //find requested contact with regard to auth user id
         $contact = Contact::where('user_id', '=', Auth::user()->id)->findOrFail($id);
         $contact->delete();
+        //delete contact image
+        if ($contact->filename != null) {
+            File::delete('storage/contact-images/'.$contact->filename);
+        }
         //Update contact count stored in session
         $this->updateContactsCount();
         
