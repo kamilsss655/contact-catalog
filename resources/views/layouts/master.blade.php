@@ -15,6 +15,8 @@
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet">
+    <link href="/css/jasny-bootstrap.min.css" rel="stylesheet">
+    
 
 
   </head>
@@ -80,8 +82,8 @@
     <script src="/js/bootstrap.min.js"></script>
     <!--Custom add contact modal-->
     <script src="/js/custom/animate.js"></script>
-    <!--Bootbox.js modal lib-->
-    <script src="/js/bootbox.min.js"></script>
+    <!--Jasny bootstrap for image upload styling and preview-->
+    <script src="/js/jasny-bootstrap.min.js"></script>
 
   </body>
 </html>

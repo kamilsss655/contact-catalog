@@ -135,27 +135,13 @@ footer {
 }
 
 /* User contacts picture*/
-.frame-round {
-	
-	margin: 0 auto;
-	vertical-align: middle;
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
-	overflow: hidden;
-}
-
-.crop {
-	height: 100%;
-	overflow: hidden;
-	position: relative;
-	border-radius: 50%;
-}
   
 .contact-image {
 	display: block;
 	margin: 0 auto;
 	border-radius: 50%;
+	max-height: 100px;
+	max-width: 100px;
 }
 
 
@@ -188,4 +174,24 @@ footer {
 }
 .inline-help button {
 	display: inline;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
 }
