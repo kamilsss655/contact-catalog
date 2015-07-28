@@ -34,6 +34,12 @@ class AuthController extends Controller
     {
         $this->middleware('guest', ['except' => 'getLogout']);
     }
+    
+    //show wrong credentials message - workaround by overriding default message - better fix that Laravel ;)
+    protected function getFailedLoginMessage()
+    {
+        return 'Podane informacje są nieprawidłowe.';
+    }   
 
     /**
      * Get a validator for an incoming registration request.

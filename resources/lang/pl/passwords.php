@@ -14,5 +14,5 @@ return [
     "user"     => "Nie znaleziono użytkownika z takim adresem e-mail.",
     "token"    => "Token resetowania hasła jest nieprawidłowy.",
     "sent"     => "Przypomnienie hasła zostało wysłane!",
-    "reset"    => "Hasło zostało zresetowane!",
+    "reset"    => "Hasło zostało zresetowane!"
 ];

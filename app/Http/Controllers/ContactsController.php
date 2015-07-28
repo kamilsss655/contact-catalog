@@ -55,6 +55,19 @@ class ContactsController extends Controller
      */
     public function store(Request $request)
     {
+        //validate user input
+        $this->validate($request, [
+            'first_name'    =>      'required|max:32',
+            'email'         =>      'required|max:100',
+            'last name'     =>      'max:32',
+            'phone'         =>      'max:20',
+            'city'          =>      'max:64',
+            'street'        =>      'max:100',
+            'house_number'  =>      'max:10',
+            'county'        =>      'max:32',
+            'zip_code'      =>      'max:10'
+        ]);
+    
         //create new contact
         $contact = new Contact;
         //add contact to the currently logged in user
@@ -94,7 +107,7 @@ class ContactsController extends Controller
         //check if contact exists
         if ($contact==null) {
             //if it doesnt exist goto contact list
-            return redirect()->action('ContactsController@index');
+            return redirect()->action('ContactsController@index')->with('error', 'Podany kontakt nie istnieje');;
         }
         else {
             //return contact or fail if not found
@@ -112,7 +125,7 @@ class ContactsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('contacts.show', ['contact' => Contact::where('user_id', '=', Auth::user()->id)->find($id)]);
     }
 
     /**

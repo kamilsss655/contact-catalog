@@ -56,7 +56,7 @@
                         {!! Form::open(array('route' => array('contact.destroy', $contact->id), 'method' => 'delete', 'class' => 'action-btn')) !!}
                             <button type="submit" class="btn btn-danger btn-mini">Usuń</button>
                         {!! Form::close() !!}
-                        <a href="{{ URL::to('contact/edit/' . $contact->id) }}" class="btn btn-mini btn-primary action-btn">Edytuj</a>
+                        <a href="{{ URL::to('contact/'.$contact->id.'/edit') }}" class="btn btn-mini btn-primary action-btn">Edytuj</a>
                         <a href="{{ URL::to('contact/' . $contact->id) }}" class="btn btn-mini btn-default action-btn">Pokaż</a>
                     </td>
                 </tr>

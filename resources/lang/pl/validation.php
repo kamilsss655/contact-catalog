@@ -28,7 +28,7 @@ return array(
 		"file"    => ":attribute musi mieć :min - :max kilobajtów.",
 		"string"  => ":attribute musi mieć :min - :max znaków.",
 	),
-	"confirmed"      => "Potwierdzenie :attribute się nie zgadza.",
+	"confirmed"      => "Potwierdzenie pola :attribute się nie zgadza.",
 	"count"          => "The :attribute must have exactly :count selected elements.",
 	"countbetween"   => "The :attribute must have between :min and :max selected elements.",
 	"countmax"       => "The :attribute must have less than :max selected elements.",
@@ -92,5 +92,20 @@ return array(
 	| It's pretty slick. We think you'll like it.
 	|
 	*/
-	'attributes' => array(),
+
+	//My custom lang array       
+	'attributes' => array(
+		"last_name"		=>		"Nazwisko",
+		"first_name"	=>		"Imię",
+		"phone"			=>		"Telefon",
+		"email"			=>		"Adres e-mail",
+		"city"			=>		"Miasto",
+		"street"		=>		"Ulica",
+		"house_number"	=>		"Number domu",
+		"county"		=>		"Województwo",
+		"zip_code"		=>		"Kod pocztowy",
+		"password"		=>		"Hasło"
+		
+	
+	)
 );

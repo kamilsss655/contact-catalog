@@ -23,7 +23,7 @@
 
   <body>
     
-    <!-- Show navigation -->  
+    {{-- Show navigation --}} 
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         @if (Auth::check())   
@@ -33,36 +33,50 @@
           @endif
         </div>
     </nav>
-    
-    <!-- Show controller status messages -->   
+  
+   {{-- Show controller status messages --}}  
     @if (session('status'))
     <div class="container-fluid padding-form text-center">
-    <div class="alert alert-success">
-       <p>{{ session('status') }} <i class="glyphicon glyphicon-ok"></i></p> 
-    </div>
+      <div class="alert alert-success">
+         <p>{{ session('status') }} <i class="glyphicon glyphicon-ok"></i></p> 
+      </div>
     </div>
     @endif
     
-    <!-- Show controller warning messages -->   
+    {{-- Show controller warning messages --}}   
     @if (session('warning'))
     <div class="container-fluid padding-form text-center">
-    <div class="alert alert-warning">
-       <p>{{ session('warning') }} <i class="glyphicon glyphicon-remove-circle"></i></p> 
-    </div>
+      <div class="alert alert-warning">
+         <p>{{ session('warning') }} <i class="glyphicon glyphicon-remove-circle"></i></p> 
+      </div>
     </div>
     @endif
     
-    <!-- Show controller error messages -->   
+    {{-- Show controller error messages --}}   
     @if (session('error'))
     <div class="container-fluid padding-form text-center">
-    <div class="alert alert-danger">
-       <p>{{ session('error') }} <i class="glyphicon glyphicon-exclamation-sign"></i></p> 
+      <div class="alert alert-danger">
+         <p>{{ session('error') }} <i class="glyphicon glyphicon-exclamation-sign"></i></p> 
+      </div>
     </div>
+    @endif
+    
+    {{-- Show validation errors --}}
+    @if (count($errors) > 0)
+    <div class="container-fluid padding-form text-center">
+      <div class="alert alert-danger">
+          <p><i class="glyphicon glyphicon-alert"></i><strong> Wystąpił błąd!</strong></p>
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
     </div>
     @endif
     
      <!-- Show main content -->   
-    @yield('content')
+      @yield('content')
             
             
     <!-- Show add contact modal for logged in users -->       

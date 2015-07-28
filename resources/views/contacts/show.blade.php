@@ -40,7 +40,7 @@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-danger btn-mini">Usuń</button>
                                 <span class="pull-right">
-                        <a href="{{ URL::to('contact/edit/' . $contact->id) }}" class="btn btn-mini btn-primary action-btn-profile">Edytuj</a>
+                        <a href="{{ URL::to('contact/'.$contact->id).'/edit'}}" class="btn btn-mini btn-primary action-btn-profile">Edytuj</a>
                         <a href="{{ URL::previous() }}" class="btn btn-mini btn-default action-btn-profile">Wróć</a>
                         </span>
                             </div>
