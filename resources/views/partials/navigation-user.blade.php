@@ -11,7 +11,7 @@
        
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a id="btnActivateModal" data-direction='top' href="javascript:;" onclick="jquery_stuff">Dodaj kontakt</a></li>
+            <li><a class="btnActivateModal" data-direction='top' href="javascript:;" onclick="jquery_stuff">Dodaj kontakt</a></li>
             <li role="presentation" class="active"><a href="/contact">Kontakty <span class="badge">{{ Session::get('contactCount') }}</span></a></li>
             <li class="dropdown">
               <a href="/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Więcej <span class="caret"></span></a>

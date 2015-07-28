@@ -15,7 +15,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet">
-    <link href="/css/jasny-bootstrap.min.css" rel="stylesheet">
+
     
 
 
@@ -80,8 +80,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <!--Custom add contact modal-->
-    <script src="/js/custom/animate.js"></script>
+    <!--Custom functions-->
+    <script src="/js/custom/functions.js"></script>
     <!--Jasny bootstrap for image upload styling and preview-->
     <script src="/js/jasny-bootstrap.min.js"></script>
 

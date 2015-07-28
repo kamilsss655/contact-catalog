@@ -166,13 +166,13 @@ class ContactsController extends Controller
           // getting all of the post data
         $file = array('image' => $imageFile);
         // setting up rules
-        $rules = array('image'=>'image|max:2000'); //mimes:jpeg,bmp,png and for max size max:10000
+        $rules = array('image'=>'image|max:3000'); //mimes:jpeg,bmp,png and for max size max:10000
         // doing the validation, passing post data, rules and the messages
         $validator = Validator::make($file, $rules);
         if ($validator->fails()) {
             // send back to the page with the input data and errors
             
-            redirect()->back()->with('error', 'Nieprawidłowy obraz. Maksymalny rozmiar: 2MB. Obsługiwane formaty: JPG, PNG, BMP ');
+            redirect()->back()->with('error', 'Nieprawidłowy obraz. Maksymalny rozmiar: 3MB. Obsługiwane formaty: JPG, PNG, BMP ');
 
 
         }
@@ -209,8 +209,8 @@ class ContactsController extends Controller
                     $constraint->upsize();
                 });
                 
-                //save resized image with quality of 60%
-                $img->save($globalFilePath, 60);
+                //save resized image with quality of 80%
+                $img->save($globalFilePath, 80);
                 
                 //return filepath of the image
                 return $filePath;

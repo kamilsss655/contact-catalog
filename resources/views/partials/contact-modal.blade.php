@@ -7,7 +7,7 @@
             </div>
             
             <div class="modal-body">
-                <form role="form" class="contact" method="post" action="/contact" enctype="multipart/form-data">
+                <form role="form" id="addContactForm" class="contact" method="post" action="/contact" enctype="multipart/form-data">
                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                     <div class="form-group">
                         <div class="input-group">
@@ -90,10 +90,14 @@
                        
                     <div class="form-group text-center">
                         <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-preview thumbnail center-block" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+
+                             <div class="fileinput-preview thumbnail center-block" data-trigger="fileinput"></div>
+
                             <div>
-                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Usuń</a>
-                                <span class="btn btn-primary btn-file"><span class="fileinput-new"><i class="glyphicon glyphicon-camera"></i> Wybierz zdjęcie</span><input type="file" name="image" id="imageToUpload"></span>
+                                <p class="text-muted">Format: JPG, PNG, BMP, GIF Rozmiar: < 3MB </p>
+                                <p id="fileUploadErrors" class="alert alert-danger" hidden="true"></p>
+                                <a href="#" id="imageUploadReset" class="btn btn-default fileinput-exists" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove-sign"></i> Usuń zdjęcie</a>
+                                <span class="btn btn-primary btn-file"><span class="fileinput-new"><i class="glyphicon glyphicon-camera"></i> Wybierz zdjęcie</span><input type="file" value="" accept="image/*" name="image" id="imageToUpload"></span>
                             </div>
                         </div>
                     </div>
@@ -101,8 +105,8 @@
             </div>
             
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
-                <input class="btn btn-success" type="submit" value="Dodaj kontakt" id="submit">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-floppy-remove"></i> Anuluj</button>
+                <button class="btn btn-success" type="submit" disabled="false" id="submitContact"><i class="glyphicon glyphicon-plus"></i> Dodaj kontakt</button>
             </form>
             </div>
             
