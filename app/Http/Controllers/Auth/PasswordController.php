@@ -19,7 +19,12 @@ class PasswordController extends Controller
     */
 
     use ResetsPasswords;
-
+    
+    //go to /contact url after successfull password reset
+    protected $redirectPath = '/contact';
+    //set email remainder subject
+    protected $subject = 'Resetowanie hasła';
+    
     /**
      * Create a new password controller instance.
      *
