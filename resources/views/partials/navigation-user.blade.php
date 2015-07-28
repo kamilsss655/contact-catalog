@@ -11,17 +11,17 @@
        
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a class="btnActivateModal" data-direction='top' href="javascript:;" onclick="jquery_stuff">Dodaj kontakt</a></li>
-            <li role="presentation" class="active"><a href="/contact">Kontakty <span class="badge">{{ Session::get('contactCount') }}</span></a></li>
+            <li><a class="btnActivateModal" data-direction='top' href="javascript:;" onclick="jquery_stuff"><i class="glyphicon glyphicon-plus"></i> Dodaj kontakt</a></li>
+            <li role="presentation" class="active"><a href="/contact"><i class="glyphicon glyphicon-user"></i> Kontakty <span class="badge">{{ Session::get('contactCount') }}</span></a></li>
             <li class="dropdown">
-              <a href="/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Więcej <span class="caret"></span></a>
+              <a href="/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-cog"></i> Więcej <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="/user">Mój profil</a></li>
-                <li><a href="/#">Ustawienia</a></li>
+                <li><a href="/user"><i class="glyphicon glyphicon-user"></i> Mój profil</a></li>
+                <li><a href="/#"><i class="glyphicon glyphicon-cog"></i> Ustawienia</a></li>
                 <li class="divider"></li>
-                <li><a href="/#">Pomoc</a></li>
+                <li><a href="/#"><i class="glyphicon glyphicon-book"></i> Pomoc</a></li>
                 <li class="divider"></li>
-                <li><a href="/#">Wsparcie techniczne</a></li>
+                <li><a href="/#"><i class="glyphicon glyphicon-wrench"></i> Wsparcie techniczne</a></li>
               </ul>
             </li>
           </ul>
