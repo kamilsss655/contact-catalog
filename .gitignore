@@ -1,5 +1,7 @@
 /vendor
 /node_modules
 /public/storage
+/config/database.php
+/config/mail.php
 Homestead.yaml
 .env
