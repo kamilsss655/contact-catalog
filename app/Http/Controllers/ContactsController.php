@@ -16,6 +16,7 @@ use Validator;
 use Redirect;
 use File;
 use Image;
+use DB;
 
 class ContactsController extends Controller
 {
@@ -138,7 +139,7 @@ class ContactsController extends Controller
      */
     public function update(Request $request, $id)
     {   
-        
+        $request->flash();
         //validate user input
         $this->validate($request, [
             'first_name'    =>      'required|max:32',
@@ -164,11 +165,8 @@ class ContactsController extends Controller
             $contact->filename=null;
             //save changes
             $contact->save();
-            //save success variable for the reference
-            $oldPhotoDeleted = true;
-            //return redirect()->action('ContactsController@index')->with('status', 'Usunięto stare zdjęcie!');
         } 
-        
+        //handle request data
         $contact->first_name = $request->input('first_name');
         $contact->last_name = $request->input('last_name');
         $contact->phone = $request->input('phone');
@@ -178,8 +176,13 @@ class ContactsController extends Controller
         $contact->house_number = $request->input('house_number');
         $contact->county = $request->input('county');
         $contact->zip_code = $request->input('zip_code');
-        //handle image upload, store image and store file path
-        $contact->filename = $this->imageUpload();
+        //if user wants to update picture make sure to delete old picture
+        if(Input::file('image') != null){
+            //delete old picture
+            File::delete('storage/contact-images/'.$contact->filename);   
+             //save and store new picture into user contact
+            $contact->filename = $this->imageUpload();
+        }
         //store new contact in storage
         $contact->save();
         
@@ -248,14 +251,23 @@ class ContactsController extends Controller
                 //generate high entropy string to prevent image url guessing
                 $length = 20;
                 $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+                //filename is unique due to high entropy $randomString and is unique due to uniqid()) value based on timestamp
+                $fileName = strval(uniqid()).$randomString.'.'.$extension; // renaming image
 
-                $fileName = $randomString.'.'.$extension; // renameing image
-                
+                //well if we are REALLY unlucky and generate filename that already exists lets generate another trully unique one
+                //to be this unlucky we would have to generate 2 high entropy strings in a single microsecond - very unlikely but possible
+                while (File::exists('storage/contact-images/'.$randomDir.'/'.$fileName)){
+                    //generate high entropy string to prevent image url guessing
+                    $length = 20;
+                    $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+                    //filename is unique due to high entropy $randomString and is unique due to uniqid()) value based on timestamp
+                    $fileName = strval(uniqid()).$randomString.'.'.$extension; // renaming image
+                }
                 
                 $imageFile->move($destinationPath, $fileName); // uploading file to given path
 
                 //filepaths of the image
-                $filePath=$randomDir.'/'.$randomString.'.'.$extension;
+                $filePath=$randomDir.'/'.$fileName;
                 $globalFilePath='storage/contact-images/'.$filePath;
                 
                 //open image to process with imagick
