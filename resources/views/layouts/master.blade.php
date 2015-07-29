@@ -15,6 +15,7 @@
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet">
+    <link href="/css/jquery.loader.min.css" rel="stylesheet">
 
     
 
@@ -98,6 +99,8 @@
     <script src="/js/custom/functions.js"></script>
     <!--Jasny bootstrap for image upload styling and preview-->
     <script src="/js/jasny-bootstrap.min.js"></script>
+    <!--jQuery Loader-->
+    <script src="/js/jquery.loader.min.js"></script>
 
   </body>
 </html>

@@ -1,5 +1,5 @@
     <div id="modalForm" class="modal fade"> <!--Modal start-->
-      <div class="modal-dialog">
+      <div class="modal-dialog" id="ContactAddModal">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>

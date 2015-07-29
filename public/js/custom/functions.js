@@ -29,7 +29,7 @@ $('#imageToUpload').on("change", function(){
     }
 
 });
-
+    
 $('#imageUploadReset').on("click", function(){
     $('#fileUploadErrors').text(''),
     $('#fileUploadErrors').attr("hidden", true),
@@ -38,8 +38,17 @@ $('#imageUploadReset').on("click", function(){
     $('#submitContact').html('<i class="glyphicon glyphicon-plus"></i> Wykonaj');
 });
 
+//Show loader on Contact add form submit
+$( "#addContactForm" ).submit(function( event ) {
+    $('#ContactAddModal').loader('show');
+});
+
+
 $( document ).ready(function() {
     $('#submitContact').attr("disabled", false);
+    //preload loader.gif
+    var image = new Image();
+    image.src = '/img/loader/loader.gif';
 });
 
 //Jquery checkbox buttons
