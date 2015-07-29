@@ -88,7 +88,7 @@
             
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-floppy-remove"></i> Anuluj</button>
-                <button class="btn btn-success" type="submit" disabled="false" id="submitContact"><i class="glyphicon glyphicon-plus"></i> Dodaj kontakt</button>
+                <button class="btn btn-success" type="submit" disabled="false" id="submitContact"><i class="glyphicon glyphicon-plus"></i> Wykonaj</button>
             </form>
             </div>
             
