@@ -26,8 +26,7 @@ Route::controllers([
 Route::group(['middleware' => 'auth'], function() {
     
     //Show list of user contacts and home page
-    Route::resource('contact', 'ContactsController',
-                ['only' => ['index','store','destroy','show','edit','update']]);
+    Route::resource('contact', 'ContactsController');
    
     //Show user profile - resource generates CRUD methods to use in the future
     Route::resource('user', 'UsersController',

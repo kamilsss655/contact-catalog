@@ -45,7 +45,7 @@ class ContactsController extends Controller
      */
     public function create()
     {
-        //
+        return view('contacts.create');
     }
 
     /**
@@ -56,19 +56,6 @@ class ContactsController extends Controller
      */
     public function store(Request $request)
     {
-        //validate user input
-        $this->validate($request, [
-            'first_name'    =>      'required|max:32',
-            'email'         =>      'required|max:100',
-            'last name'     =>      'max:32',
-            'phone'         =>      'max:20',
-            'city'          =>      'max:64',
-            'street'        =>      'max:100',
-            'house_number'  =>      'max:10',
-            'county'        =>      'max:32',
-            'zip_code'      =>      'max:10'
-        ]);
-    
         //create new contact
         $contact = new Contact;
         //add contact to the currently logged in user
@@ -82,16 +69,41 @@ class ContactsController extends Controller
         $contact->house_number = $request->input('house_number');
         $contact->county = $request->input('county');
         $contact->zip_code = $request->input('zip_code');
-        //handle image upload, store image and store file path
-        $contact->filename = $this->imageUpload();
-        //store new contact in storage
-        $contact->save();
-        //Update contact count stored in session
-        $this->updateContactsCount();
-        //return to contacts view
+              
+        //validate input      
+        $v = Validator::make($request->all(), [
+            'first_name'    =>      'required|max:32',
+            'last_name'     =>      'max:32',
+            'email'         =>      'required|max:100',
+            'last name'     =>      'max:32',
+            'phone'         =>      'max:20',
+            'city'          =>      'max:64',
+            'street'        =>      'max:100',
+            'house_number'  =>      'max:10',
+            'county'        =>      'max:32',
+            'zip_code'      =>      'max:10'
+        ]);
+        //show form with user input and errors so user can correct input
+        if ($v->fails())
+        {
+            $request->flash();
+            return redirect()->action('ContactsController@create',compact('contact'))->withErrors($v->errors());
+        }
+        //if validation passed
+        else
+        {
+            //handle image upload, store image and store file path
+             $contact->filename = $this->imageUpload();
         
-        
-        return redirect()->back()->with('status', 'Dodano '.$contact->email);
+            //store new contact if validation passed successfully
+            $contact->save();
+            //Update contact count stored in session
+            $this->updateContactsCount();
+            //return to contacts view
+            
+            
+            return redirect()->action('ContactsController@index')->with('status', 'Dodano '.$contact->email);
+        }
     }
 
     /**
@@ -139,10 +151,10 @@ class ContactsController extends Controller
      */
     public function update(Request $request, $id)
     {   
-        $request->flash();
-        //validate user input
-        $this->validate($request, [
+         //validate input      
+        $v = Validator::make($request->all(), [
             'first_name'    =>      'required|max:32',
+            'last_name'     =>      'max:32',
             'email'         =>      'required|max:100',
             'last name'     =>      'max:32',
             'phone'         =>      'max:20',
@@ -153,41 +165,49 @@ class ContactsController extends Controller
             'zip_code'      =>      'max:10'
         ]);
         
-        //find contact by id
-        $contact = Contact::where('user_id', '=', Auth::user()->id)->find($id);
-        
-        //User wants to delete old photo
-        //check if deleteOldPhoto checkbox is checked
-        if (Input::has('deleteOldPhoto')) {
-            //delete old photo
-            File::delete('storage/contact-images/'.$contact->filename);
-            //set filename db table field to null
-            $contact->filename=null;
-            //save changes
-            $contact->save();
-        } 
-        //handle request data
-        $contact->first_name = $request->input('first_name');
-        $contact->last_name = $request->input('last_name');
-        $contact->phone = $request->input('phone');
-        $contact->email = $request->input('email');
-        $contact->city = $request->input('city');
-        $contact->street = $request->input('street');
-        $contact->house_number = $request->input('house_number');
-        $contact->county = $request->input('county');
-        $contact->zip_code = $request->input('zip_code');
-        //if user wants to update picture make sure to delete old picture
-        if(Input::file('image') != null){
-            //delete old picture
-            File::delete('storage/contact-images/'.$contact->filename);   
-             //save and store new picture into user contact
-            $contact->filename = $this->imageUpload();
+        //if validation is not passed show user input errors
+        if ($v->fails())
+        {
+            return redirect()->back()->withErrors($v->errors());
         }
-        //store new contact in storage
-        $contact->save();
-        
-        return redirect()->action('ContactsController@index')->with('status', 'Zmodyfikowano '.$contact->email);
-        
+        //if validation passed
+        else {
+            //find contact by id
+            $contact = Contact::where('user_id', '=', Auth::user()->id)->find($id);
+            
+            //User wants to delete old photo
+            //check if deleteOldPhoto checkbox is checked
+            if (Input::has('deleteOldPhoto')) {
+                //delete old photo
+                File::delete('storage/contact-images/'.$contact->filename);
+                //set filename db table field to null
+                $contact->filename=null;
+                //save changes
+                $contact->save();
+            } 
+            //handle request data
+            $contact->first_name = $request->input('first_name');
+            $contact->last_name = $request->input('last_name');
+            $contact->phone = $request->input('phone');
+            $contact->email = $request->input('email');
+            $contact->city = $request->input('city');
+            $contact->street = $request->input('street');
+            $contact->house_number = $request->input('house_number');
+            $contact->county = $request->input('county');
+            $contact->zip_code = $request->input('zip_code');
+            //if user wants to update picture make sure to delete old picture
+            if(Input::file('image') != null){
+                //delete old picture
+                File::delete('storage/contact-images/'.$contact->filename);   
+                 //save and store new picture into user contact
+                $contact->filename = $this->imageUpload();
+            }
+            
+            //store new contact in storage
+            $contact->save();
+            
+            return redirect()->action('ContactsController@index')->with('status', 'Zmodyfikowano '.$contact->email);
+        }
     }
 
     /**
@@ -232,6 +252,7 @@ class ContactsController extends Controller
         $rules = array('image'=>'image|max:3000'); //mimes:jpeg,bmp,png and for max size max:10000
         // doing the validation, passing post data, rules and the messages
         $validator = Validator::make($file, $rules);
+        //if validation fails
         if ($validator->fails()) {
             // send back to the page with the input data and errors
             
@@ -239,6 +260,7 @@ class ContactsController extends Controller
 
 
         }
+        //if validation passes
         else {
              // checking file is valid.
             if (Input::file('image')->isValid()) {

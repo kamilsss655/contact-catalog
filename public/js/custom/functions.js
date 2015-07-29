@@ -25,7 +25,7 @@ $('#imageToUpload').on("change", function(){
         $('#fileUploadErrors').attr("hidden", true),
         $('#submitContact').attr("disabled", false),
         $('#submitContact').attr('class', 'btn btn-success'),
-        $('#submitContact').html('<i class="glyphicon glyphicon-plus"></i> Dodaj kontakt');
+        $('#submitContact').html('<i class="glyphicon glyphicon-plus"></i> Wykonaj');
     }
 
 });
@@ -35,7 +35,7 @@ $('#imageUploadReset').on("click", function(){
     $('#fileUploadErrors').attr("hidden", true),
     $('#submitContact').attr("disabled", false),
     $('#submitContact').attr('class', 'btn btn-success'),
-    $('#submitContact').html('<i class="glyphicon glyphicon-plus"></i> Dodaj kontakt');
+    $('#submitContact').html('<i class="glyphicon glyphicon-plus"></i> Wykonaj');
 });
 
 $( document ).ready(function() {
