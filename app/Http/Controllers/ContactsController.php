@@ -138,6 +138,20 @@ class ContactsController extends Controller
      */
     public function update(Request $request, $id)
     {   
+        
+        //validate user input
+        $this->validate($request, [
+            'first_name'    =>      'required|max:32',
+            'email'         =>      'required|max:100',
+            'last name'     =>      'max:32',
+            'phone'         =>      'max:20',
+            'city'          =>      'max:64',
+            'street'        =>      'max:100',
+            'house_number'  =>      'max:10',
+            'county'        =>      'max:32',
+            'zip_code'      =>      'max:10'
+        ]);
+        
         //find contact by id
         $contact = Contact::where('user_id', '=', Auth::user()->id)->find($id);
         
@@ -152,9 +166,24 @@ class ContactsController extends Controller
             $contact->save();
             //save success variable for the reference
             $oldPhotoDeleted = true;
-            return redirect()->action('ContactsController@index')->with('status', 'Usunięto stare zdjęcie!');
+            //return redirect()->action('ContactsController@index')->with('status', 'Usunięto stare zdjęcie!');
         } 
-            return view('index');
+        
+        $contact->first_name = $request->input('first_name');
+        $contact->last_name = $request->input('last_name');
+        $contact->phone = $request->input('phone');
+        $contact->email = $request->input('email');
+        $contact->city = $request->input('city');
+        $contact->street = $request->input('street');
+        $contact->house_number = $request->input('house_number');
+        $contact->county = $request->input('county');
+        $contact->zip_code = $request->input('zip_code');
+        //handle image upload, store image and store file path
+        $contact->filename = $this->imageUpload();
+        //store new contact in storage
+        $contact->save();
+        
+        return redirect()->action('ContactsController@index')->with('status', 'Zmodyfikowano '.$contact->email);
         
     }
 
