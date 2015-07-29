@@ -107,7 +107,7 @@ class ContactsController extends Controller
         //check if contact exists
         if ($contact==null) {
             //if it doesnt exist goto contact list
-            return redirect()->action('ContactsController@index')->with('error', 'Podany kontakt nie istnieje');;
+            return redirect()->action('ContactsController@index')->with('error', 'Podany kontakt nie istnieje');
         }
         else {
             //return contact or fail if not found
@@ -125,7 +125,8 @@ class ContactsController extends Controller
      */
     public function edit($id)
     {
-        return view('contacts.show', ['contact' => Contact::where('user_id', '=', Auth::user()->id)->find($id)]);
+        //show edit form
+        return view('contacts.edit', ['contact' => Contact::where('user_id', '=', Auth::user()->id)->find($id)]);
     }
 
     /**
@@ -136,8 +137,25 @@ class ContactsController extends Controller
      * @return Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        //find contact by id
+        $contact = Contact::where('user_id', '=', Auth::user()->id)->find($id);
+        
+        //User wants to delete old photo
+        //check if deleteOldPhoto checkbox is checked
+        if (Input::has('deleteOldPhoto')) {
+            //delete old photo
+            File::delete('storage/contact-images/'.$contact->filename);
+            //set filename db table field to null
+            $contact->filename=null;
+            //save changes
+            $contact->save();
+            //save success variable for the reference
+            $oldPhotoDeleted = true;
+            return redirect()->action('ContactsController@index')->with('status', 'Usunięto stare zdjęcie!');
+        } 
+            return view('index');
+        
     }
 
     /**
