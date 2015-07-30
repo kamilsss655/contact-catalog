@@ -17,6 +17,7 @@ use Redirect;
 use File;
 use Image;
 use DB;
+use View;
 
 class ContactsController extends Controller
 {
@@ -73,9 +74,8 @@ class ContactsController extends Controller
         //validate input      
         $v = Validator::make($request->all(), [
             'first_name'    =>      'required|max:32',
-            'last_name'     =>      'max:32',
             'email'         =>      'required|max:100',
-            'last name'     =>      'max:32',
+            'last_name'     =>      'max:32',
             'phone'         =>      'max:20',
             'city'          =>      'max:64',
             'street'        =>      'max:100',
@@ -112,7 +112,17 @@ class ContactsController extends Controller
      * @return Response
      */
     public function search(){
-        return view('index');
+        //get input query
+        $query = Input::get('q');
+        //get results from db
+        //make sure we search contacts belonging only to the currently logged in user
+        $results = Contact::where('user_id', Auth::user()->id)
+            //perform search
+            ->search($query)
+            //paginate results
+            ->paginate(10);
+        //return view with the results
+        return view('contacts.search',compact('results','query'));
     }
 
     /**

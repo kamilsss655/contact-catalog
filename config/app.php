@@ -150,6 +150,7 @@ return [
         //Internevtion Image - image manipulation class
         Intervention\Image\ImageServiceProvider::class
 
+
     ],
 
     /*

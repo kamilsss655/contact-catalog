@@ -89,7 +89,7 @@ footer {
 }
 	
 /* No-more-tables - Responsive table */
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1200px) {
     
     /* Force table to not be like tables anymore */
 	#no-more-tables table, 
@@ -99,8 +99,12 @@ footer {
 	#no-more-tables td, 
 	#no-more-tables tr { 
 		display: block; 
+		
 	}
- 
+	/*wrap overflows*/
+	#no-more-tables table{
+		table-layout:fixed; word-break:break-all; word-wrap:break-word;
+	}
 	/* Hide table headers (but not display: none;, for accessibility) */
 	#no-more-tables thead tr { 
 		position: absolute;
@@ -115,10 +119,9 @@ footer {
 		border: none;
 		border-bottom: 1px solid #eee; 
 		position: relative;
-		padding-left: 38%; 
+		padding-left: 50%; 
 		white-space: normal;
 		text-align:left;
-		min-height: 2em;
 	}
  
 	#no-more-tables td:before { 

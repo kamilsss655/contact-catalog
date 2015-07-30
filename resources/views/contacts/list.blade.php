@@ -3,20 +3,19 @@
 @section('content')
 
 @if(sizeof($contacts) == 0)
-    <div class="container-fluid padding-form text-center">
+    <div class="container padding-form">
     <div class="alert alert-info">
        <p>Nie masz żadnych kontaktów.</p> 
        <a href="#" class="btn btn-primary btnActivateModal"><i class="glyphicon glyphicon-plus"></i> Dodaj kontakt</a>
     </div>
     </div>
 @endif
-
 <div class="container-fluid padding-form">
     <div class="row">
 
         
         <div id="no-more-tables">
-            <table class="col-md-10 col-md-offset-1 table-bordered table-striped table-condensed cf">
+            <table class="col-md-12 table-bordered table-striped table-condensed cf">
         		<thead class="cf">
         			<tr>
         			    <th>Zdjęcie</th>
@@ -37,10 +36,8 @@
                 <tr>
                     <td data-title="Zdjęcie">
             
-                            @include('partials.contact-image')
-                    
-                        
-  
+                        @include('partials.contact-image')
+
                     </td>
                     <td data-title="Imię">{{ $contact->first_name}}</td>
                     <td data-title="Nazwisko">{{ $contact->last_name }}</td>

@@ -36,7 +36,7 @@
           
           <form class="navbar-form navbar-right" role="search" action="/contacts/search">
             <div class="input-group">
-                <input class="form-control" placeholder="Szukaj" name="q" type="text">
+                <input class="form-control" placeholder="Szukaj" name="q" type="text" value="{{Input::get('q')}}">
                 <div class="input-group-btn">
                     <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
