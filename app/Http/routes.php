@@ -31,6 +31,9 @@ Route::group(['middleware' => 'auth'], function() {
     //Show user profile - resource generates CRUD methods to use in the future
     Route::resource('user', 'UsersController',
                 ['only' => ['index']]);
-    
+
+    //Search contacts            
+    Route::get('contacts/search', [
+    'as' => 'search', 'uses' => 'ContactsController@search']);
     
 });

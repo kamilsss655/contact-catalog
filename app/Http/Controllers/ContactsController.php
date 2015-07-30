@@ -105,6 +105,15 @@ class ContactsController extends Controller
             return redirect()->action('ContactsController@index')->with('status', 'Dodano '.$contact->email);
         }
     }
+    
+     /**
+     * List contacts matching search criteria
+     *
+     * @return Response
+     */
+    public function search(){
+        return view('index');
+    }
 
     /**
      * Display the specified resource.
@@ -245,78 +254,77 @@ class ContactsController extends Controller
         
         $imageFile=Input::file('image');
         if ($imageFile != null) {
-
-          // getting all of the post data
-        $file = array('image' => $imageFile);
-        // setting up rules
-        $rules = array('image'=>'image|max:3000'); //mimes:jpeg,bmp,png and for max size max:10000
-        // doing the validation, passing post data, rules and the messages
-        $validator = Validator::make($file, $rules);
-        //if validation fails
-        if ($validator->fails()) {
-            // send back to the page with the input data and errors
-            
-            redirect()->back()->with('error', 'Nieprawidłowy obraz. Maksymalny rozmiar: 3MB. Obsługiwane formaty: JPG, PNG, BMP ');
-
-
-        }
-        //if validation passes
-        else {
-             // checking file is valid.
-            if (Input::file('image')->isValid()) {
-                //store images in random subdirectories - filesystem optimalisation
-                //can be extended to some more advanced filesystem balancer system in the future
-                $randomDir=strval(mt_rand(0,2));
-                $destinationPath = 'storage/contact-images/'.$randomDir; // upload path
-                $extension = $imageFile->getClientOriginalExtension(); // getting image extension
+              // getting all of the post data
+            $file = array('image' => $imageFile);
+            // setting up rules
+            $rules = array('image'=>'image|max:3000'); //mimes:jpeg,bmp,png and for max size max:10000
+            // doing the validation, passing post data, rules and the messages
+            $validator = Validator::make($file, $rules);
+            //if validation fails
+            if ($validator->fails()) {
+                // send back to the page with the input data and errors
                 
-                //generate high entropy string to prevent image url guessing
-                $length = 20;
-                $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
-                //filename is unique due to high entropy $randomString and is unique due to uniqid()) value based on timestamp
-                $fileName = strval(uniqid()).$randomString.'.'.$extension; // renaming image
-
-                //well if we are REALLY unlucky and generate filename that already exists lets generate another trully unique one
-                //to be this unlucky we would have to generate 2 high entropy strings in a single microsecond - very unlikely but possible
-                while (File::exists('storage/contact-images/'.$randomDir.'/'.$fileName)){
+                redirect()->back()->with('error', 'Nieprawidłowy obraz. Maksymalny rozmiar: 3MB. Obsługiwane formaty: JPG, PNG, BMP ');
+    
+    
+            }
+            //if validation passes
+            else {
+                 // checking file is valid.
+                if (Input::file('image')->isValid()) {
+                    //store images in random subdirectories - filesystem optimalisation
+                    //can be extended to some more advanced filesystem balancer system in the future
+                    $randomDir=strval(mt_rand(0,2));
+                    $destinationPath = 'storage/contact-images/'.$randomDir; // upload path
+                    $extension = $imageFile->getClientOriginalExtension(); // getting image extension
+                    
                     //generate high entropy string to prevent image url guessing
                     $length = 20;
                     $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
-                    //filename is unique due to high entropy $randomString and is unique due to uniqid()) value based on timestamp
+                    //filename is random due to high entropy $randomString and is unique due to uniqid()) value based on timestamp
                     $fileName = strval(uniqid()).$randomString.'.'.$extension; // renaming image
+    
+                    //well if we are REALLY unlucky and generate filename that already exists lets generate another trully unique one
+                    //to be this unlucky we would have to generate 2 high entropy strings in a single microsecond - very unlikely but possible
+                    while (File::exists('storage/contact-images/'.$randomDir.'/'.$fileName)){
+                        //generate high entropy string to prevent image url guessing
+                        $length = 20;
+                        $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+                        //filename is unique due to high entropy $randomString and is unique due to uniqid()) value based on timestamp
+                        $fileName = strval(uniqid()).$randomString.'.'.$extension; // renaming image
+                    }
+                    
+                    $imageFile->move($destinationPath, $fileName); // uploading file to given path
+    
+                    //filepaths of the image
+                    $filePath=$randomDir.'/'.$fileName;
+                    $globalFilePath='storage/contact-images/'.$filePath;
+                    
+                    //open image to process with imagick
+                    $img = Image::make($globalFilePath);
+                    
+                    //read EXIF and set proper orientation - fixes rotated images when getting images from mobile camera
+                    $img->orientate();
+                    
+                    // crop the best fitting 1:1 (100x100) ratio and resize to 100x100 pixel
+                    $img->fit(100, 100, function ($constraint) {
+                        $constraint->upsize();
+                    });
+                    
+                    //save resized image with quality of 80%
+                    $img->save($globalFilePath, 80);
+                    
+                    //return filepath of the image
+                    return $filePath;
                 }
-                
-                $imageFile->move($destinationPath, $fileName); // uploading file to given path
-
-                //filepaths of the image
-                $filePath=$randomDir.'/'.$fileName;
-                $globalFilePath='storage/contact-images/'.$filePath;
-                
-                //open image to process with imagick
-                $img = Image::make($globalFilePath);
-                
-                //read EXIF and set proper orientation - fixes rotated images when getting images from mobile camera
-                $img->orientate();
-                
-                // crop the best fitting 1:1 (100x100) ratio and resize to 100x100 pixel
-                $img->fit(100, 100, function ($constraint) {
-                    $constraint->upsize();
-                });
-                
-                //save resized image with quality of 80%
-                $img->save($globalFilePath, 80);
-                
-                //return filepath of the image
-                return $filePath;
-            }
-            else {
-                // sending back with error message.
-                redirect()->back()->with('error', 'Nieprawidłowy obraz. Maksymalny rozmiar: 2MB. Obsługiwane formaty: JPG, PNG, BMP ');
+                else {
+                    // sending back with error message.
+                    redirect()->back()->with('error', 'Nieprawidłowy obraz. Maksymalny rozmiar: 3MB. Obsługiwane formaty: JPG, PNG, BMP ');
+                }
             }
         }
-    }
     
-        //
-}
+    }
+   
     
 }

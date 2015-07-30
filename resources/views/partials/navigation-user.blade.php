@@ -25,10 +25,22 @@
               </ul>
             </li>
           </ul>
+      
+  
           <form id="logout" class="navbar-form navbar-right"  method="GET" action="{{ url('/auth/logout') }}" role="form">
             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
             <span class="nav-username"><a href="/user">{{ Auth::user()->email }}</a></span>
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <button type="submit" class="btn btn-danger">Wyloguj</button>
           </form>
+          
+          <form class="navbar-form navbar-right" role="search" action="/contacts/search">
+            <div class="input-group">
+                <input class="form-control" placeholder="Szukaj" name="q" type="text">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+            </div>
+          </form>
+          
           </div>
