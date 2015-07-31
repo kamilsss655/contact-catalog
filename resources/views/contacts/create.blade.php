@@ -7,7 +7,7 @@
         <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 ">
             <div class="panel panel-default ">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Edycja kontaktu</h3>
+                    <h3 class="panel-title">Dodaj kontakt</h3>
                 </div>
                 
                 <div class="panel-body">
