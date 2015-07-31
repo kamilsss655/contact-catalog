@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'], function() {
     //Show list of user contacts and home page
     Route::resource('contact', 'ContactsController');
    
-    //Show user profile - resource generates CRUD methods to use in the future
+    //Show user profile - resource generates RESTful methods to use in the future
     Route::resource('user', 'UsersController',
                 ['only' => ['index']]);
 
@@ -36,4 +36,13 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('contacts/search', [
     'as' => 'search', 'uses' => 'ContactsController@search']);
     
+    //Message contacts
+    //Show compose message form
+    Route::get('message/{id}',
+        ['as' => 'message.create',
+        'uses' => 'MessagesController@create', function ($userId) {}]);
+    //Process user input and send message
+    Route::post('message',
+        ['as' => 'message.send',
+        'uses' => 'MessagesController@send', function () {}]);
 });

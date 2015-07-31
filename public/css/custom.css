@@ -224,3 +224,13 @@ footer {
 	height:100%;
 	overflow: hidden;
 }
+
+.textarea-msg{ 
+	min-height:220px;
+	resize:none;
+	width:85%;
+	margin:0 auto;
+	box-sizing: border-box;
+	-moz-box-sizing:border-box; 
+	-webkit-box-sizing:border-box; 
+}

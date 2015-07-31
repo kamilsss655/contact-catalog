@@ -54,7 +54,7 @@
                             <button type="submit" class="btn btn-danger btn-mini" alt="Usuń"><i class="glyphicon glyphicon-remove"></i> Usuń</button>
                         {!! Form::close() !!}
                         <a href="{{ URL::to('contact/'.$contact->id.'/edit') }}" class="btn btn-mini btn-warning action-btn" alt="Edytuj"><i class="glyphicon glyphicon-pencil"></i> Edycja</a>
-                        <a href="{{ URL::to('contact/' . $contact->id) }}" class="btn btn-mini btn-primary action-btn" alt="Pokaż"><i class="glyphicon glyphicon-envelope"></i> Napisz</a>
+                        <a href="{{ URL::to('message/' . $contact->id) }}" class="btn btn-mini btn-primary action-btn" alt="Napisz"><i class="glyphicon glyphicon-envelope"></i> Napisz</a>
                         <a href="{{ URL::to('contact/' . $contact->id) }}" class="btn btn-mini btn-default action-btn" alt="Pokaż"><i class="glyphicon glyphicon-user"></i> Pokaż</a>
                     </td>
                 </tr>

@@ -104,7 +104,8 @@ return array(
 		"house_number"	=>		"Number domu",
 		"county"		=>		"Województwo",
 		"zip_code"		=>		"Kod pocztowy",
-		"password"		=>		"Hasło"
+		"password"		=>		"Hasło",
+		"message"		=>		"Wiadomość"
 		
 	
 	)
