@@ -90,9 +90,18 @@ footer {
 
 #no-more-tables table {
 	font-family: 'Arial', sans-serif;
-	font-size:0.80em;
+	font-size:0.85em;
 	/*font-size:1em;*/
 	color: black;
+}
+@media only screen and (max-width: 1250px) {
+	
+}
+@media only screen and (min-width: 1800px) {
+	#no-more-tables table {
+	font-size:1em;
+	color: #333;
+	}
 }
 /* No-more-tables - Responsive table */
 @media only screen and (max-width: 1250px) {
