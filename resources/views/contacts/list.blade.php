@@ -6,7 +6,7 @@
     <div class="container padding-form">
     <div class="alert alert-info">
        <p>Nie masz żadnych kontaktów.</p> 
-       <a href="#" class="btn btn-primary btnActivateModal"><i class="glyphicon glyphicon-plus"></i> Dodaj kontakt</a>
+       <p><a href="#" class="btn btn-primary btnActivateModal"><i class="glyphicon glyphicon-plus"></i> Dodaj kontakt</a></p>
     </div>
     </div>
 @endif
