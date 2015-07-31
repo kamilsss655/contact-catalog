@@ -138,11 +138,11 @@ class ContactsController extends Controller
         
         //check if contact exists
         if ($contact==null) {
-            //if it doesnt exist goto contact list
+            //if it doesnt exist goto contact list with not found error
             return redirect()->action('ContactsController@index')->with('error', 'Podany kontakt nie istnieje');
         }
         else {
-            //return contact or fail if not found
+            //return contact 
             return view('contacts.show',compact('contact'));
         }
 

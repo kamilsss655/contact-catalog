@@ -87,9 +87,15 @@ footer {
 .input-group .btn-login {
 	margin-left:0.7em;
 }
-	
+
+#no-more-tables table {
+	font-family: 'Arial', sans-serif;
+	font-size:0.80em;
+	/*font-size:1em;*/
+	color: black;
+}
 /* No-more-tables - Responsive table */
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1250px) {
     
     /* Force table to not be like tables anymore */
 	#no-more-tables table, 
@@ -103,7 +109,7 @@ footer {
 	}
 	/*wrap overflows*/
 	#no-more-tables table{
-		table-layout:fixed; word-break:break-all; word-wrap:break-word;
+		table-layout:fixed; word-break:break-all; word-wrap:break-word; font-size:0.9em;
 	}
 	/* Hide table headers (but not display: none;, for accessibility) */
 	#no-more-tables thead tr { 
@@ -122,6 +128,7 @@ footer {
 		padding-left: 50%; 
 		white-space: normal;
 		text-align:left;
+		min-height:2.2em;
 	}
  
 	#no-more-tables td:before { 
