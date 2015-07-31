@@ -160,8 +160,10 @@ footer {
 	max-width: 100px;
 }
 
-.alert p {
-	word-break:break-all; word-wrap:break-word;	
+.alert {
+	word-break:break-all;
+	word-wrap:break-word;	
+	text-align:center;	
 }
 
 .action-btn {

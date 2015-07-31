@@ -72,17 +72,7 @@ class ContactsController extends Controller
         $contact->zip_code = $request->input('zip_code');
               
         //validate input      
-        $v = Validator::make($request->all(), [
-            'first_name'    =>      'required|max:32',
-            'email'         =>      'required|max:100',
-            'last_name'     =>      'max:32',
-            'phone'         =>      'max:20',
-            'city'          =>      'max:64',
-            'street'        =>      'max:100',
-            'house_number'  =>      'max:10',
-            'county'        =>      'max:32',
-            'zip_code'      =>      'max:10'
-        ]);
+        $v = $this->validateInput($request);
         //show form with user input and errors so user can correct input
         if ($v->fails())
         {
@@ -171,18 +161,7 @@ class ContactsController extends Controller
     public function update(Request $request, $id)
     {   
          //validate input      
-        $v = Validator::make($request->all(), [
-            'first_name'    =>      'required|max:32',
-            'last_name'     =>      'max:32',
-            'email'         =>      'required|max:100',
-            'last name'     =>      'max:32',
-            'phone'         =>      'max:20',
-            'city'          =>      'max:64',
-            'street'        =>      'max:100',
-            'house_number'  =>      'max:10',
-            'county'        =>      'max:32',
-            'zip_code'      =>      'max:10'
-        ]);
+        $v = $this->validateInput($request);
         
         //if validation is not passed show user input errors
         if ($v->fails())
@@ -256,6 +235,22 @@ class ContactsController extends Controller
         //Need to call this every time contact is added or deleted
         $contactCount = Contact::where('user_id', Auth::user()->id)->count();
         Session::put('contactCount', $contactCount);
+    }
+    
+    //validate user input
+    private function validateInput($request){
+        $v = Validator::make($request->all(), [
+            'first_name'    =>      'required|max:15',
+            'last_name'     =>      'max:32',
+            'email'         =>      'required|max:50',
+            'phone'         =>      'max:20',
+            'city'          =>      'max:32',
+            'street'        =>      'max:75',
+            'house_number'  =>      'max:8',
+            'county'        =>      'max:20',
+            'zip_code'      =>      'max:6'
+        ]);
+        return $v;
     }
     
     //handle image upload and return $filepath to saved resource
