@@ -38,10 +38,10 @@
                 
                         {!! Form::open(array('route' => array('contact.destroy', $contact->id), 'method' => 'delete', 'class' => 'action-btn-profile')) !!}
                             <div class="form-group">
-                                <button type="submit" class="btn btn-danger btn-mini">Usuń</button>
+                                <button type="submit" class="btn btn-danger btn-mini"><i class="glyphicon glyphicon-remove"></i> Usuń</button>
                                 <span class="pull-right">
-                        <a href="{{ URL::to('contact/'.$contact->id).'/edit'}}" class="btn btn-mini btn-primary action-btn-profile">Edytuj</a>
-                        <a href="{{ URL::previous() }}" class="btn btn-mini btn-default action-btn-profile">Wróć</a>
+                        <a href="{{ URL::previous() }}" class="btn btn-mini btn-default action-btn-profile"><i class="glyphicon glyphicon-floppy-remove"></i> Wróć</a>
+                        <a href="{{ URL::to('contact/'.$contact->id).'/edit'}}" class="btn btn-mini btn-primary action-btn-profile"><i class="glyphicon glyphicon-pencil"></i> Edytuj</a>
                         </span>
                             </div>
                         {!! Form::close() !!}
