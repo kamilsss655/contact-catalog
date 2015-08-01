@@ -8,6 +8,12 @@ body {
 	}
 }
 
+@media only screen and (width: 768px) {
+	body {
+ 	padding-top: 110px;
+	}
+}
+
 footer {
 	text-align: center;
 	color: #808080;
