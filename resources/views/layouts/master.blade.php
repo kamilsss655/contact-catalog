@@ -64,14 +64,12 @@
     
     {{-- Show validation errors --}}
     @if (count($errors) > 0)
-    <div class="container-fluid padding-form text-center">
+    <div class="container-fluid padding-form">
       <div class="alert alert-danger">
           <p><i class="glyphicon glyphicon-alert"></i><strong> Wystąpił błąd!</strong></p>
-          <ul>
               @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
+                  <p class="list">{{ $error }}</p>
               @endforeach
-          </ul>
       </div>
     </div>
     @endif
