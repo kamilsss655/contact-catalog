@@ -147,8 +147,16 @@ class ContactsController extends Controller
      */
     public function edit($id)
     {
+        $contact=Contact::where('user_id', '=', Auth::user()->id)->find($id);
+        
+        //check if contact exists
+        if ($contact==null) {
+            //if it doesnt exist goto contact list with not found error
+            return redirect()->action('ContactsController@index')->with('error', 'Podany kontakt nie istnieje');
+        }
+        
         //show edit form
-        return view('contacts.edit', ['contact' => Contact::where('user_id', '=', Auth::user()->id)->find($id)]);
+        return view('contacts.edit', ['contact' => $contact]);
     }
 
     /**
