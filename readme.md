@@ -1,4 +1,4 @@
-## Contact catalog demo app.
+## Contacto - contact management solution.
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
@@ -6,4 +6,4 @@
 [![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-Simple contact catalog demo app utilizing Laravel 5 framework.
+Contact data management web application utilizing Laravel 5.1 framework.
