@@ -7,7 +7,7 @@
             </div>
             
             <div class="modal-body">
-                <form role="form" class="contact addContactForm" method="post" action="/contact" enctype="multipart/form-data">
+                <form role="form" class="contact" method="post" action="/contact" enctype="multipart/form-data">
                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                     <div class="form-group">
                         <div class="input-group">
@@ -78,14 +78,14 @@
                             <div>
                                 <p class="text-muted">Format: JPG, PNG, BMP, GIF Rozmiar: < 3MB </p>
                                 <p class="alert alert-danger image-input-errors" hidden="true"></p>
-                                <a href="#" class="btn btn-default fileinput-exists image-input-reset" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove-sign"></i> Usuń zdjęcie</a>
-                                <span class="btn btn-primary btn-file"><span class="fileinput-new"><i class="glyphicon glyphicon-camera"></i> Wybierz zdjęcie</span><input type="file" class="image-input" value="" accept="image/*" name="image"></span>
+                                <a href="#" class="btn btn-default fileinput-exists image-input-reset btn-contact-form" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove-sign"></i> Usuń zdjęcie</a>
+                                <span class="btn btn-primary btn-file btn-contact-form"><span class="fileinput-new"><i class="glyphicon glyphicon-camera"></i> Wybierz zdjęcie</span><input type="file" class="image-input" value="" accept="image/*" name="image"></span>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-floppy-remove"></i> Anuluj</button>
-                        <button class="btn btn-success contact-form-submit" type="submit"><i class="glyphicon glyphicon-plus"></i> Wykonaj</button>
+                        <button type="button" class="btn btn-default btn-contact-form" data-dismiss="modal"><i class="glyphicon glyphicon-floppy-remove"></i> Anuluj</button>
+                        <button class="btn btn-success contact-form-submit btn-contact-form" type="submit"><i class="glyphicon glyphicon-plus"></i> Wykonaj</button>
                    </div>
                 </form>
             </div>

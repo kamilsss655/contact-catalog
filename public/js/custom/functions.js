@@ -11,13 +11,13 @@ $('.btn-activate-modal').click(function() {
 $('.image-input').on("change", function(){
 
     //Check if selected file size is less than 3MB
-    if ((this.files[0].size/1024/1024) > (3)) {
+    if ((this.files[0].size/1024/1024) >= (3)) {
         //if it is bigger than threshhold lock the form and display error messages
         $(this).closest('form').find('.image-input-errors').html('<i class="glyphicon glyphicon-exclamation-sign"></i> To zdjęcie jest za duże. Max. rozmiar pliku : 3MB'),
         $(this).closest('form').find('.image-input-errors').attr("hidden", false),
         $(this).closest('form').find('.contact-form-submit').prop("disabled", true),
         $(this).closest('form').find('.contact-form-submit').html('<i class="glyphicon glyphicon-exclamation-sign"></i> Formularz zawiera błędy'),
-        $(this).closest('form').find('.contact-form-submit').attr('class', 'btn btn-danger contact-form-submit'),
+        $(this).closest('form').find('.contact-form-submit').attr('class', 'btn btn-danger contact-form-submit btn-contact-form'),
         $(this).reset();
     }
     else {
@@ -25,7 +25,7 @@ $('.image-input').on("change", function(){
         $(this).closest('form').find('.image-input-errors').text(''),
         $(this).closest('form').find('.image-input-errors').attr("hidden", true),
         $(this).closest('form').find('.contact-form-submit').prop("disabled", false),
-        $(this).closest('form').find('.contact-form-submit').attr('class', 'btn btn-success contact-form-submit'),
+        $(this).closest('form').find('.contact-form-submit').attr('class', 'btn btn-success contact-form-submit btn-contact-form'),
         $(this).closest('form').find('.contact-form-submit').html('<i class="glyphicon glyphicon-plus"></i> Wykonaj');
     }
 
@@ -35,7 +35,7 @@ $('.image-input-reset').on("click", function(){
     $(this).closest('form').find('.image-input-errors').text(''),
     $(this).closest('form').find('.image-input-errors').attr("hidden", true),
     $(this).closest('form').find('.contact-form-submit').attr("disabled", false),
-    $(this).closest('form').find('.contact-form-submit').attr('class', 'btn btn-success contact-form-submit'),
+    $(this).closest('form').find('.contact-form-submit').attr('class', 'btn btn-success contact-form-submit btn-contact-form'),
     $(this).closest('form').find('.contact-form-submit').html('<i class="glyphicon glyphicon-plus"></i> Wykonaj');
 });
 
@@ -119,5 +119,8 @@ $(function () {
         init();
     });
 });
+
+//empty function - prevents scrolling of the page when modal is clicked by the user
+function jquery_stuff() {}
 
 

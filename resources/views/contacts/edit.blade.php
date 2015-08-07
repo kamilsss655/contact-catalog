@@ -91,8 +91,8 @@
                                 <div>
                                     <p class="text-muted">Format: JPG, PNG, BMP, GIF Rozmiar: < 3MB </p>
                                     <p class="alert alert-danger image-input-errors" hidden="true"></p>
-                                    <a href="#" class="btn btn-default fileinput-exists image-input-reset" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove-sign"></i> Anuluj</a>
-                                    <span class="btn btn-primary btn-file"><span class="fileinput-new"><i class="glyphicon glyphicon-camera"></i> Zmień zdjęcie</span><input type="file" class="image-input" value="" accept="image/*" name="image"></span>
+                                    <a href="#" class="btn btn-default fileinput-exists image-input-reset btn-contact-form" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove-sign"></i> Anuluj</a>
+                                    <span class="btn btn-primary btn-file btn-contact-form"><span class="fileinput-new"><i class="glyphicon glyphicon-camera"></i> Zmień zdjęcie</span><input type="file" class="image-input" value="" accept="image/*" name="image"></span>
                                     <hr>
                                 </div>
                             </div>
@@ -111,8 +111,8 @@
                                 <div>
                                     <p class="text-muted">Format: JPG, PNG, BMP, GIF Rozmiar: < 3MB </p>
                                     <p class="alert alert-danger image-input-errors" hidden="true"></p>
-                                    <a href="#" class="btn btn-default fileinput-exists image-input-reset" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove-sign"></i> Anuluj</a>
-                                    <span class="btn btn-primary btn-file"><span class="fileinput-new"><i class="glyphicon glyphicon-camera"></i> Dodaj zdjęcie</span><input class="image-input" type="file" value="" accept="image/*" name="image"></span>
+                                    <a href="#" class="btn btn-default fileinput-exists image-input-reset btn-contact-form" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove-sign"></i> Anuluj</a>
+                                    <span class="btn btn-primary btn-file btn-contact-form"><span class="fileinput-new"><i class="glyphicon glyphicon-camera"></i> Dodaj zdjęcie</span><input class="image-input" type="file" value="" accept="image/*" name="image"></span>
                                    
                                 </div>
                             </div>
@@ -122,8 +122,8 @@
                         
                         <hr>
                         <div class="form-group pull-right">
-                            <a href="{{ URL::previous() }}" class="btn btn-default"><i class="glyphicon glyphicon-floppy-remove"></i> Anuluj</a>
-                            <button class="btn btn-success contact-form-submit" type="submit"><i class="glyphicon glyphicon-plus"></i> Wykonaj</button>
+                            <a href="{{ URL::previous() }}" class="btn btn-default btn-contact-form"><i class="glyphicon glyphicon-floppy-remove"></i> Anuluj</a>
+                            <button class="btn btn-success contact-form-submit btn-contact-form" type="submit"><i class="glyphicon glyphicon-plus"></i> Wykonaj</button>
                         </div>
                
                     <!--</form>-->

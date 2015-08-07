@@ -279,7 +279,6 @@ class ContactsController extends Controller
                 
                 redirect()->back()->with('error', 'Nieprawidłowy obraz. Maksymalny rozmiar: 3MB. Obsługiwane formaty: JPG, PNG, BMP ');
     
-    
             }
             //if validation passes
             else {

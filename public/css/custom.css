@@ -95,6 +95,10 @@ footer {
 	}
 }
 
+.btn-contact-form {
+	margin-top:10px;
+}
+
 .input-group .btn-login {
 	margin-left:0.7em;
 }
@@ -184,6 +188,10 @@ footer {
 	word-break:break-all;
 	word-wrap:break-word;	
 	text-align:center;	
+}
+
+.image-input-errors {
+	word-break: break-word;	
 }
 
 .action-btn {
