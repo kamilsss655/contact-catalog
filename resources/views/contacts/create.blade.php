@@ -82,9 +82,9 @@
 
                                 <div>
                                     <p class="text-muted">Format: JPG, PNG, BMP, GIF Rozmiar: < 3MB </p>
-                                    <p id="fileUploadErrors" class="alert alert-danger" hidden="true"></p>
-                                    <a href="#" id="imageUploadReset" class="btn btn-default fileinput-exists" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove-sign"></i> Anuluj</a>
-                                    <span class="btn btn-primary btn-file"><span class="fileinput-new"><i class="glyphicon glyphicon-camera"></i> Dodaj zdjęcie</span><input type="file" value="" accept="image/*" name="image" id="imageToUpload"></span>
+                                    <p class="alert alert-danger image-input-errors" hidden="true"></p>
+                                    <a href="#" class="btn btn-default fileinput-exists image-input-reset" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove-sign"></i> Anuluj</a>
+                                    <span class="btn btn-primary btn-file"><span class="fileinput-new"><i class="glyphicon glyphicon-camera"></i> Dodaj zdjęcie</span><input type="file" value="" accept="image/*" name="image" class="image-input"></span>
                                    
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                         <hr>
                         <div class="form-group pull-right">
                             <a href="{{ URL::previous() }}" class="btn btn-default"><i class="glyphicon glyphicon-floppy-remove"></i> Anuluj</a>
-                            <button class="btn btn-success" type="submit" disabled="false" id="submitContact"><i class="glyphicon glyphicon-plus"></i> Wykonaj</button>
+                            <button class="btn btn-success contact-form-submit" type="submit"><i class="glyphicon glyphicon-plus"></i> Wykonaj</button>
                         </div>
                
                     </form>

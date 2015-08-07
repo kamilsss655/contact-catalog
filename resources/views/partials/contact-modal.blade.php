@@ -1,5 +1,5 @@
-    <div id="modalForm" class="modal fade"> <!--Modal start-->
-      <div class="modal-dialog" id="ContactAddModal">
+    <div class="modal fade modal-form"> <!--Modal start-->
+      <div class="modal-dialog ContactAddModal">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -7,7 +7,7 @@
             </div>
             
             <div class="modal-body">
-                <form role="form" id="addContactForm" class="contact" method="post" action="/contact" enctype="multipart/form-data">
+                <form role="form" class="contact addContactForm" method="post" action="/contact" enctype="multipart/form-data">
                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                     <div class="form-group">
                         <div class="input-group">
@@ -77,19 +77,17 @@
 
                             <div>
                                 <p class="text-muted">Format: JPG, PNG, BMP, GIF Rozmiar: < 3MB </p>
-                                <p id="fileUploadErrors" class="alert alert-danger" hidden="true"></p>
-                                <a href="#" id="imageUploadReset" class="btn btn-default fileinput-exists" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove-sign"></i> Usuń zdjęcie</a>
-                                <span class="btn btn-primary btn-file"><span class="fileinput-new"><i class="glyphicon glyphicon-camera"></i> Wybierz zdjęcie</span><input type="file" value="" accept="image/*" name="image" id="imageToUpload"></span>
+                                <p class="alert alert-danger image-input-errors" hidden="true"></p>
+                                <a href="#" class="btn btn-default fileinput-exists image-input-reset" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove-sign"></i> Usuń zdjęcie</a>
+                                <span class="btn btn-primary btn-file"><span class="fileinput-new"><i class="glyphicon glyphicon-camera"></i> Wybierz zdjęcie</span><input type="file" class="image-input" value="" accept="image/*" name="image"></span>
                             </div>
                         </div>
                     </div>
-
-            </div>
-            
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-floppy-remove"></i> Anuluj</button>
-                <button class="btn btn-success" type="submit" disabled="false" id="submitContact"><i class="glyphicon glyphicon-plus"></i> Wykonaj</button>
-            </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-floppy-remove"></i> Anuluj</button>
+                        <button class="btn btn-success contact-form-submit" type="submit"><i class="glyphicon glyphicon-plus"></i> Wykonaj</button>
+                   </div>
+                </form>
             </div>
             
           

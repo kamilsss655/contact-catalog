@@ -1,51 +1,52 @@
 // Add contact modal animation
-$('.btnActivateModal').click(function() {
-    $('#modalForm')
-        .prop('class', 'modal fade') // revert to default
-        .addClass( $(this).data('direction') );
-    $('#modalForm').modal('show');
+$('.btn-activate-modal').click(function() {
+    $('.modal-form')
+        .prop('class', 'modal fade modal-form') // revert to default
+        .addClass( $(this).data('direction'))
+        .modal('show');
 });
 
 // Add contact client side image validation
+//When user selects file
+$('.image-input').on("change", function(){
 
-
-$('#imageToUpload').on("change", function(){
-
-    //this.files[0].size gets the size of your file.
+    //Check if selected file size is less than 3MB
     if ((this.files[0].size/1024/1024) > (3)) {
-        $('#fileUploadErrors').text('Zdjęcie jest zbyt duże. Maksymalny rozmiar pliku to 3MB.'),
-        $('#fileUploadErrors').attr("hidden", false),
-        $('#submitContact').attr("disabled", true),
-        $('#submitContact').attr('class', 'btn btn-danger'),
-        $('#submitContact').html('<i class="glyphicon glyphicon-exclamation-sign"></i> Formularz zawiera błędy'),
-        this.reset();
+        //if it is bigger than threshhold lock the form and display error messages
+        $(this).closest('form').find('.image-input-errors').html('<i class="glyphicon glyphicon-exclamation-sign"></i> To zdjęcie jest za duże. Max. rozmiar pliku : 3MB'),
+        $(this).closest('form').find('.image-input-errors').attr("hidden", false),
+        $(this).closest('form').find('.contact-form-submit').prop("disabled", true),
+        $(this).closest('form').find('.contact-form-submit').html('<i class="glyphicon glyphicon-exclamation-sign"></i> Formularz zawiera błędy'),
+        $(this).closest('form').find('.contact-form-submit').attr('class', 'btn btn-danger contact-form-submit'),
+        $(this).reset();
     }
     else {
-        $('#fileUploadErrors').text(''),
-        $('#fileUploadErrors').attr("hidden", true),
-        $('#submitContact').attr("disabled", false),
-        $('#submitContact').attr('class', 'btn btn-success'),
-        $('#submitContact').html('<i class="glyphicon glyphicon-plus"></i> Wykonaj');
+        //otherwise unlock the form
+        $(this).closest('form').find('.image-input-errors').text(''),
+        $(this).closest('form').find('.image-input-errors').attr("hidden", true),
+        $(this).closest('form').find('.contact-form-submit').prop("disabled", false),
+        $(this).closest('form').find('.contact-form-submit').attr('class', 'btn btn-success contact-form-submit'),
+        $(this).closest('form').find('.contact-form-submit').html('<i class="glyphicon glyphicon-plus"></i> Wykonaj');
     }
 
 });
-    
-$('#imageUploadReset').on("click", function(){
-    $('#fileUploadErrors').text(''),
-    $('#fileUploadErrors').attr("hidden", true),
-    $('#submitContact').attr("disabled", false),
-    $('#submitContact').attr('class', 'btn btn-success'),
-    $('#submitContact').html('<i class="glyphicon glyphicon-plus"></i> Wykonaj');
+//Unlock the form when user resets file selection
+$('.image-input-reset').on("click", function(){
+    $(this).closest('form').find('.image-input-errors').text(''),
+    $(this).closest('form').find('.image-input-errors').attr("hidden", true),
+    $(this).closest('form').find('.contact-form-submit').attr("disabled", false),
+    $(this).closest('form').find('.contact-form-submit').attr('class', 'btn btn-success contact-form-submit'),
+    $(this).closest('form').find('.contact-form-submit').html('<i class="glyphicon glyphicon-plus"></i> Wykonaj');
 });
 
 //Show loader on Contact add form submit
-$( "#addContactForm" ).submit(function( event ) {
-    $('#ContactAddModal').loader('show');
+$( ".addContactForm" ).submit(function( event ) {
+    $('.ContactAddModal').loader('show');
 });
 
 
 $( document ).ready(function() {
-    $('#submitContact').attr("disabled", false);
+    $('.contact-form-submit').attr("disabled", false);
     //preload loader.gif
     var image = new Image();
     image.src = '/img/loader/loader.gif';
